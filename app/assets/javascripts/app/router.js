@@ -21,14 +21,14 @@ function Routes($stateProvider, $urlRouterProvider){
         })
         .state('sign_in', {
             url: '/sign_in',
-            templateUrl : "views/auth/sign_in.html",
-            controller: 'AuthCtrl',
+            templateUrl : "sign_in.html",
+            controller: 'AuthController',
             authenticate: false
         })
         .state('sign_up', {
             url: '/sign_up',
-            templateUrl : "views/auth/sign_up.html",
-            controller: 'AuthCtrl',
+            templateUrl : "sign_up.html",
+            controller: 'AuthController',
             authenticate: false
         })
         // this route will only be available to authenticated users

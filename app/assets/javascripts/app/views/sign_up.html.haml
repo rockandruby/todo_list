@@ -1,0 +1,19 @@
+%ul{'ng-controller' => 'AuthController'}
+  %li{'ng-repeat' => 'error in errors', class: 'error'} {{error}}
+
+.row
+  .col-lg-6
+    %form{"ng-init" => "registrationForm = {}", "ng-submit" => "submitRegistration(registrationForm)", :role => "form"}
+      .form-group
+        %label Name
+        %input.form-control{:name => "name", "ng-model" => "registrationForm.name", :required => "required"}/
+      .form-group
+        %label email
+        %input.form-control{:name => "email", "ng-model" => "registrationForm.email", :required => "required", :type => "email"}/
+      .form-group
+        %label password
+        %input.form-control{:name => "password", "ng-model" => "registrationForm.password", :required => "required", :type => "password"}/
+      .form-group
+        %label password confirmation
+        %input.form-control{:name => "password_confirmation", "ng-model" => "registrationForm.password_confirmation", :required => "required", :type => "password"}/
+      %button.btn.btn-primary{:type => "submit"} Register

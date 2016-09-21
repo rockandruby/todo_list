@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'devise_token_auth'
 gem 'omniauth-facebook'
+gem 'angular-rails-templates'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

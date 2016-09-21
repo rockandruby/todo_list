@@ -10,7 +10,9 @@
   %body.container
     .row
       %ul.nav.nav-tabs
-        %li.active
+        %li{'ui-sref-active' => 'active'}
           %a{'ui-sref' => 'home'} Home
+        %li{'ui-sref-active' => 'active'}
+          %a{'ui-sref' => 'sign_up'} Sign up
 
     %ui-view
