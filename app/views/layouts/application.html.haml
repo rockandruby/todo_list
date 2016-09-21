@@ -2,9 +2,15 @@
 %html{'ng-app' => 'app'}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %base{href: '/'}
     %title TodoList
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-  %body
-    = yield
+  %body.container
+    .row
+      %ul.nav.nav-tabs
+        %li.active
+          %a{'ui-sref' => 'home'} Home
+
+    %ui-view
