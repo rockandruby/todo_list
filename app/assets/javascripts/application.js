@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular/angular.min
+//= require angular-cookie/angular-cookie.min
 //= require angular-ui-router/release/angular-ui-router.min
 //= require bootstrap/dist/js/bootstrap.min
+//= require ng-token-auth/dist/ng-token-auth.min
 //= require app/app
 //= require app/router
 //= require_tree .
