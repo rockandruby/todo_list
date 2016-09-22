@@ -16,4 +16,9 @@
       .form-group
         %label password confirmation
         %input.form-control{:name => "password_confirmation", "ng-model" => "registrationForm.password_confirmation", :required => "required", :type => "password"}/
-      %button.btn.btn-primary{:type => "submit"} Register
+      .form-group
+        %button.btn.btn-primary{:type => "submit"} Register
+      .form-group
+        %button{"ng-click" => "authenticate('facebook')", class: 'btn btn-success'}
+          Sign in with Facebook
+
