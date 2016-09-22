@@ -10,9 +10,10 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "angular": "~1.5.8",
+    "angular-cookie": "~4.1.0",
+    "angular-flash-alert": "^2.3.0",
     "angular-ui-router": "~1.0.0-beta.2",
     "bootstrap": "~3.3.7",
-    "ng-token-auth": "0.0.29",
-    "angular-cookie": "~4.1.0"
+    "ng-token-auth": "0.0.29"
   }
 }

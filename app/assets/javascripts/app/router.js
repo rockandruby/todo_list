@@ -14,27 +14,19 @@ function Routes($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-        // this state will be visible to everyone
         .state('home', {
             url: '/',
-            template: '<h1>Index</h1>'
+            templateUrl : "home.html"
         })
         .state('sign_in', {
             url: '/sign_in',
             templateUrl : "sign_in.html",
-            controller: 'AuthController',
-            authenticate: false
+            controller: 'AuthController'
         })
         .state('sign_up', {
             url: '/sign_up',
             templateUrl : "sign_up.html",
-            controller: 'AuthController',
-            authenticate: false
+            controller: 'AuthController'
         })
-        // this route will only be available to authenticated users
-        .state('sign_out', {
-            url: '/sign_out',
-            controller: 'AuthCtrl',
-            authenticate: true
-        });
+
 }

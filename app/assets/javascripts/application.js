@@ -17,6 +17,7 @@
 //= require angular-ui-router/release/angular-ui-router.min
 //= require ng-token-auth/dist/ng-token-auth.min
 //= require bootstrap/dist/js/bootstrap.min
+//= require angular-flash-alert/dist/angular-flash.min
 //= require app/app
 //= require app/router
 //= require_tree ./app/controllers

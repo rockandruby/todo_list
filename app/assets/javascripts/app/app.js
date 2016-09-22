@@ -4,8 +4,13 @@
 var app = angular.module('app', [
     'ui.router',
     'ng-token-auth',
-    'templates'
+    'templates',
+    'ngFlash'
 ]);
+
+app.run(['$rootScope', function($rootScope){
+    $rootScope.user = false;
+}]);
 
 app.config(['$authProvider', function($authProvider){
     $authProvider.configure({
@@ -13,3 +18,11 @@ app.config(['$authProvider', function($authProvider){
         omniauthWindowType: 'newWindow'
     });
 }]);
+
+app.config(['FlashProvider', function(FlashProvider){
+    FlashProvider.setTimeout(3000);
+}]);
+
+
+
+

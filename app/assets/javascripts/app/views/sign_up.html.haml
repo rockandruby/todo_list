@@ -1,6 +1,3 @@
-%ul{'ng-controller' => 'AuthController'}
-  %li{'ng-repeat' => 'error in errors', class: 'error'} {{error}}
-
 .row
   .col-lg-6
     %form{"ng-init" => "registrationForm = {}", "ng-submit" => "submitRegistration(registrationForm)", :role => "form"}
@@ -18,7 +15,7 @@
         %input.form-control{:name => "password_confirmation", "ng-model" => "registrationForm.password_confirmation", :required => "required", :type => "password"}/
       .form-group
         %button.btn.btn-primary{:type => "submit"} Register
-      .form-group
-        %button{"ng-click" => "authenticate('facebook')", class: 'btn btn-success'}
-          Sign in with Facebook
+.row
+  %button{"ng-click" => "authenticate('facebook')", class: 'btn btn-success'}
+    Sign in with Facebook
 
