@@ -7,12 +7,10 @@ function AuthController($scope, $rootScope, $state, $auth, Flash){
     $scope.$on('auth:registration-email-success', function(ev, user) {
         $rootScope.user = user;
         $auth.submitLogin(user);
-        $state.go('home');
     });
 
     $scope.$on('auth:registration-email-error', function(ev, reason) {
         Flash.create('danger', reason.errors.full_messages.join('<br>'), 0);
-        console.log(reason)
     });
 
     $rootScope.$on('auth:login-success', function(ev, user) {

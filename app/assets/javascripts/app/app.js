@@ -22,7 +22,3 @@ app.config(['$authProvider', function($authProvider){
 app.config(['FlashProvider', function(FlashProvider){
     FlashProvider.setTimeout(3000);
 }]);
-
-
-
-
