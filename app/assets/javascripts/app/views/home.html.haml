@@ -1,27 +1,50 @@
-%div{'ng-if' => 'user.signedIn'}
+.col-lg-10.projects{'ng-if' => 'user.signedIn', 'ng-controller': 'ProjectsController'}
   %h1 MY PROJECTS
+  %div{'ng-repeat' => 'project in projects', class: 'project'}
+    .col-lg-12.col-md-12.col-sm-12.head
+      .col-lg-1.col-md-1.col-sm-1
+        %i{class: 'glyphicon glyphicon-list-alt'}
+      .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'project.title'}
+      .col-lg-1.col-md-1.col-sm-1
+        %i{class: 'glyphicon glyphicon-pencil'}
+      .col-lg-1.col-md-1.col-sm-1
+        %i{class: 'glyphicon glyphicon-remove'}
+    .col-lg-12.col-md-12.col-sm-12
+      .col-lg-1.col-md-1.col-sm-1
+        %i{class: 'glyphicon glyphicon-plus'}
+      .col-lg-11.col-md-11.col-sm-11
+        %form{'ng-submit' => 'add_task()'}
+          .form-group.col-lg-10.col-md-10.col-sm-10
+            %input{name: 'title', type: 'text', 'ng-model' => 'task_title', class: 'form-control'}
+          .col-lg-2.col-md-2.col-sm-2
+            %input{type: 'submit', value: 'Add task', class: 'btn btn-primary'}
+    .col-lg-12.col-md-12.col-sm-12
+      .col-lg-1.col-md-1.col-sm-1
+        ssd
+      .col-lg-9.col-md-9.col-sm-9
+        sdfsd
+      .col-lg-2.col-md-2.col-sm-2
+        .col-lg-1.col-md-1.col-sm-1
+          %div
+            %i{class: 'glyphicon glyphicon-chevron-up'}
+          %div
+            %i{class: 'glyphicon glyphicon-chevron-down'}
+        .col-lg-1.col-md-1.col-sm-1
+          %i{class: 'glyphicon glyphicon-pencil'}
+        .col-lg-1.col-md-1.col-sm-1
+          %i{class: 'glyphicon glyphicon-remove'}
+  %div.add_todo
+    %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#add_project'}} Add TODO list
 
-  %table.table
-    %thead
-      %tr
-        %th
-          %i{class: 'glyphicon glyphicon-list-alt'}
-        %th First Name
-        %th Last Name
-        %th Username
-    %tbody
-      %tr
-        %th{:scope => "row"} 1
-        %td Mark
-        %td Otto
-        %td @mdo
-      %tr
-        %th{:scope => "row"} 2
-        %td Jacob
-        %td Thornton
-        %td @fat
-      %tr
-        %th{:scope => "row"} 3
-        %td Larry
-        %td the Bird
-        %td @twitter
+  #add_project.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4#myModalLabel.modal-title Enter project title
+        .modal-body
+          %input{name: 'title', type: 'text', 'ng-model' => 'title', class: 'form-control'}
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          %button.btn.btn-primary{:type => "button", 'ng-click': 'add_project()'} Add project

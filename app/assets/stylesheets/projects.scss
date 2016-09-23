@@ -1,3 +1,29 @@
+body{
+  background-color: #d6d1c0;
+}
 .ng-cloak {
   display: none !important;
+}
+
+.projects{
+  .project{
+    padding-bottom: 25%;
+  }
+  .col-lg-12{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid grey;
+  }
+  .head{
+    background-color: #2e71d0;
+    border-radius: 2px;
+    color: white;
+  }
+  .add_todo{
+    text-align: center;
+    button{
+      margin-top: 10%;
+      margin-bottom: 10%;
+    }
+  }
 }
