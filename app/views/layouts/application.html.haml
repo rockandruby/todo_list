@@ -8,15 +8,15 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body.container
-    .row
+    .row.ng-cloak
       %ul.nav.nav-tabs
         %li{'ui-sref-active' => 'active'}
           %a{'ui-sref' => 'home'} Home
         %li{'ui-sref-active' => 'active'}
-          %a{'ui-sref' => 'sign_up', 'ng-hide' => 'user'} Sign up
+          %a{'ui-sref' => 'sign_up', 'ng-if' => '!user.signedIn'} Sign up
         %li{'ui-sref-active' => 'active'}
-          %a{'ui-sref' => 'sign_in', 'ng-hide' => 'user'} Sign in
-        %li{'ui-sref-active' => 'active', 'ng-show' => 'user'}
+          %a{'ui-sref' => 'sign_in', 'ng-if' => '!user.signedIn'} Sign in
+        %li{'ui-sref-active' => 'active', 'ng-if' => 'user.signedIn'}
           %a{'ng-click' => 'signOut()', href: '#'} Sign out
 
     %flash-message

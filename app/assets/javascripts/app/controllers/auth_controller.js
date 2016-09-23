@@ -5,7 +5,6 @@ app.controller('AuthController', ['$scope', '$rootScope', '$state', '$auth', 'Fl
 
 function AuthController($scope, $rootScope, $state, $auth, Flash){
     $scope.$on('auth:registration-email-success', function(ev, user) {
-        $rootScope.user = user;
         $auth.submitLogin(user);
     });
 
@@ -14,7 +13,6 @@ function AuthController($scope, $rootScope, $state, $auth, Flash){
     });
 
     $rootScope.$on('auth:login-success', function(ev, user) {
-        $rootScope.user = user;
         Flash.create('success', 'You signed in!');
         $state.go('home');
     });
@@ -29,6 +27,5 @@ function AuthController($scope, $rootScope, $state, $auth, Flash){
 
     $rootScope.$on('auth:logout-success', function(ev) {
         Flash.create('success', 'You signed out!');
-        $rootScope.user = false
     });
 }

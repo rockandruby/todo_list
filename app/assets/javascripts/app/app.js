@@ -8,10 +8,6 @@ var app = angular.module('app', [
     'ngFlash'
 ]);
 
-app.run(['$rootScope', function($rootScope){
-    $rootScope.user = false;
-}]);
-
 app.config(['$authProvider', function($authProvider){
     $authProvider.configure({
         apiUrl: 'http://localhost:3000',
