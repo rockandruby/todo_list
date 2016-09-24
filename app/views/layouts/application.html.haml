@@ -19,5 +19,6 @@
         %li{'ui-sref-active' => 'active', 'ng-if' => 'user.signedIn'}
           %a{'ng-click' => 'signOut()', href: '#'} Sign out
 
-    %flash-message
+    .flash
+      %flash-message
     %ui-view

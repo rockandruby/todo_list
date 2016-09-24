@@ -6,6 +6,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    current_user.projects.create(title: params[:title])
+    render json: current_user.projects.create!(title: params[:title])
   end
 end

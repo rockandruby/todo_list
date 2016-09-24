@@ -9,18 +9,20 @@ function ProjectsController($scope, $http, $auth, Flash){
         url: $auth.apiUrl() + '/projects'
     }).then(function successCallback(response) {
         $scope.projects = response.data
-    }, function errorCallback(response) {
-        console.log(response)
     });
     $scope.add_project = function(){
+        $scope.error = false;
+        if($scope.title == null) return $scope.error = true;
         $http({
             method: 'POST',
             url: $auth.apiUrl() + '/projects',
             data: {title: $scope.title}
         }).then(function successCallback(response) {
             angular.element('#add_project').modal('hide');
+            $scope.projects.push(response.data);
+            Flash.create('success', 'New project added!');
         }, function errorCallback(response) {
-            console.log(response)
+            $scope.error = true
         });
     }
 }
