@@ -8,20 +8,33 @@ function ProjectsController($scope, $http, $auth, Flash){
         method: 'GET',
         url: $auth.apiUrl() + '/projects'
     }).then(function successCallback(response) {
-        $scope.projects = response.data
+        $scope.projects = response.data;
     });
+
     $scope.add_project = function(){
-        $scope.error = false;
-        if($scope.title == null) return $scope.error = true;
+        if(!validate()) return $scope.error = true;
         $http({
             method: 'POST',
             url: $auth.apiUrl() + '/projects',
             data: {title: $scope.title}
         }).then(function successCallback(response) {
-            angular.element('#add_project').modal('hide');
+            angular.element('#project_modal').modal('hide');
             $scope.projects.push(response.data);
             Flash.create('success', 'New project added!');
-            $scope.title = null
+        }, function errorCallback() {
+            $scope.error = true
+        });
+    };
+
+    $scope.edit_project = function(){
+        if(!validate()) return $scope.error = true;
+        $http({
+            method: 'PATCH',
+            url: $auth.apiUrl() + '/projects/' + $scope.project.id,
+            data: {title: $scope.title}
+        }).then(function successCallback(response) {
+            angular.element('#project_modal').modal('hide');
+            Flash.create('success', 'Project updated!');
         }, function errorCallback() {
             $scope.error = true
         });
@@ -41,6 +54,20 @@ function ProjectsController($scope, $http, $auth, Flash){
         }, function errorCallback() {
             Flash.create('danger', 'You\'re not authorized!');
         });
-    }
+    };
 
+    $scope.before_edit = function(project){
+        $scope.error = false;
+        $scope.project = project;
+        $scope.title = project.title
+    };
+
+    $scope.before_add = function(){
+        $scope.error = false;
+        $scope.title = null;
+    };
+
+    function validate(){
+        return $scope.title != null && $scope.title.length > 0
+    }
 }

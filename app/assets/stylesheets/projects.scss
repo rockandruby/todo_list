@@ -1,9 +1,6 @@
 body{
   background-color: #d6d1c0;
 }
-.ng-cloak {
-  display: none !important;
-}
 
 .projects{
   .project{
@@ -22,7 +19,6 @@ body{
   .add_todo{
     text-align: center;
     button{
-      margin-top: 10%;
       margin-bottom: 10%;
     }
   }
