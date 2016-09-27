@@ -20,6 +20,7 @@
 //= require angular-flash-alert/dist/angular-flash.min
 //= require app/app
 //= require app/router
+//= require_tree ./app/services
 //= require_tree ./app/controllers
 //= require angular-rails-templates
 //= require_tree ./app/views
