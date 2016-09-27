@@ -11,7 +11,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    render json: @project.update(title: params[:title])
+    @project.update(title: params[:title])
+    render json: @project
   end
 
   def destroy

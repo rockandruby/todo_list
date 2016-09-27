@@ -32,7 +32,8 @@ function ProjectsController($scope, $http, $auth, Flash){
             method: 'PATCH',
             url: $auth.apiUrl() + '/projects/' + $scope.project.id,
             data: {title: $scope.title}
-        }).then(function successCallback(response) {
+        }).then(function successCallback() {
+            $scope.project.title = $scope.title;
             angular.element('#project_modal').modal('hide');
             Flash.create('success', 'Project updated!');
         }, function errorCallback() {
