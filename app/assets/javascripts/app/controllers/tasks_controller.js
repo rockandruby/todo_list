@@ -10,10 +10,11 @@ function TasksController($scope, $http, $auth, Flash){
             url: $auth.apiUrl() + '/projects/'+ $scope.project.id + '/tasks',
             data: {title: $scope.task_title}
         }).then(function successCallback(response) {
-            console.log($scope.project)
-            //Flash.create('success', 'New task added!');
+            $scope.project.tasks.push(response.data);
+            Flash.create('success', 'New task added!');
+            $scope.task_title = null
         }, function errorCallback() {
-            //Flash.create('danger', 'Not authorized!');
+            Flash.create('danger', 'Not authorized!');
         });
     }
 }

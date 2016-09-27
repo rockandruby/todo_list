@@ -1,6 +1,6 @@
 .col-lg-10.projects{'ng-if' => 'user.signedIn', 'ng-controller': 'ProjectsController'}
   %h1 MY PROJECTS
-  %div{'ng-repeat' => 'project in projects', class: 'project'}
+  %div{'ng-repeat' => "project in projects | orderBy: '-id'", class: 'project'}
     .col-lg-12.col-md-12.col-sm-12.head
       .col-lg-1.col-md-1.col-sm-1
         %i{class: 'glyphicon glyphicon-list-alt'}
@@ -17,11 +17,10 @@
             %input{name: 'title', type: 'text', 'ng-model' => 'task_title', class: 'form-control'}
           .col-lg-2.col-md-2.col-sm-2
             %input{type: 'submit', value: 'Add task', class: 'btn btn-primary'}
-      .col-lg-12.col-md-12.col-sm-12
+      .col-lg-12.col-md-12.col-sm-12{'ng-repeat' => 'task in project.tasks'}
         .col-lg-1.col-md-1.col-sm-1
-          ssd
-        .col-lg-9.col-md-9.col-sm-9
-          sdfsd
+          %input{name: 'is_done', type: 'checkbox'}
+        .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'task.title'}
         .col-lg-2.col-md-2.col-sm-2
           .col-lg-1.col-md-1.col-sm-1
             %div
@@ -32,6 +31,7 @@
             %i{class: 'glyphicon glyphicon-pencil'}
           .col-lg-1.col-md-1.col-sm-1
             %i{class: 'glyphicon glyphicon-remove'}
+
   %div.add_todo
     %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#project_modal'}, 'ng-click' => 'before_add()'} Add TODO list
 

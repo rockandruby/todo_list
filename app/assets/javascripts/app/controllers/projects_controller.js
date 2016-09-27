@@ -4,6 +4,7 @@
 app.controller('ProjectsController', ['$scope', '$http', '$auth', 'Flash', ProjectsController]);
 
 function ProjectsController($scope, $http, $auth, Flash){
+
     $http({
         method: 'GET',
         url: $auth.apiUrl() + '/projects'
