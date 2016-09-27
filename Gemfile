@@ -30,6 +30,7 @@ gem 'devise_token_auth'
 gem 'omniauth-facebook'
 gem 'angular-rails-templates'
 gem 'cancancan', '~> 1.10'
+gem 'active_model_serializers', '~> 0.10.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
