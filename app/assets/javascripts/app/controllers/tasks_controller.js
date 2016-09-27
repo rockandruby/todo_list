@@ -1,16 +1,13 @@
 /**
  * Created by user on 27.09.16.
  */
-app.controller('TasksController', ['$scope', '$http', '$auth', 'Flash', TasksController]);
+app.controller('TasksController', ['$scope', 'Flash', 'task', TasksController]);
 
-function TasksController($scope, $http, $auth, Flash){
+function TasksController($scope, Flash, task){
     $scope.add_task = function(){
         if(!validate()) return Flash.create('danger', 'Title can\'t be empty!');
-        $http({
-            method: 'POST',
-            url: $auth.apiUrl() + '/projects/'+ $scope.project.id + '/tasks',
-            data: {title: $scope.task_title}
-        }).then(function successCallback(response) {
+        task.add_task($scope.project.id, $scope.task_title)
+            .then(function successCallback(response) {
             $scope.project.tasks.push(response.data);
             Flash.create('success', 'New task added!');
             $scope.task_title = null
