@@ -1,0 +1,17 @@
+#project_modal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.modal-title Enter project title
+        .error{'ng-show' => 'error'}
+          Title can't be empty
+      .modal-body
+        %input{name: 'title', type: 'text', 'ng-model' => '$parent.title', class: 'form-control'}
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary{:type => "button", 'ng-click': 'add_project()',
+           'ng-show' => 'project == null'} Add project
+        %button.btn.btn-primary{:type => "button", 'ng-click': 'edit_project()',
+           'ng-hide' => 'project == null'} Edit project
