@@ -5,6 +5,7 @@ app.controller('TasksController', ['$scope', '$http', '$auth', 'Flash', TasksCon
 
 function TasksController($scope, $http, $auth, Flash){
     $scope.add_task = function(){
+        if(!validate()) return Flash.create('danger', 'Title can\'t be empty!');
         $http({
             method: 'POST',
             url: $auth.apiUrl() + '/projects/'+ $scope.project.id + '/tasks',
@@ -16,5 +17,9 @@ function TasksController($scope, $http, $auth, Flash){
         }, function errorCallback() {
             Flash.create('danger', 'Not authorized!');
         });
+    };
+
+    function validate(){
+        return $scope.task_title != null && $scope.task_title.length > 0
     }
 }
