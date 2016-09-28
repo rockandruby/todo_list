@@ -17,7 +17,12 @@ function TasksController($scope, Flash, task) {
     };
 
     $scope.update_task = function (project_obj, task_obj, direction) {
-        task.edit_task(project_obj.id, task_obj.id, direction)
+        $scope.task_data = {
+          project_id: project_obj.id,
+          id: task_obj.id,
+          direction: direction
+        };
+        task.edit_task($scope.task_data)
             .then(function successCallback(response) {
                 $scope.project = response.data
             })
@@ -30,6 +35,10 @@ function TasksController($scope, Flash, task) {
                 $scope.project.tasks = response.data
             })
     };
+
+    //$scope.before_edit = function (task) {
+    //    $scope.task_data.title =123
+    //};
 
     function validate() {
         return $scope.task_title != null && $scope.task_title.length > 0

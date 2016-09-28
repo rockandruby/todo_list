@@ -30,7 +30,8 @@
               %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
               'ng-click' => "update_task(project, task, 'down')"}
           .col-lg-1.col-md-1.col-sm-1
-            %i{class: 'link glyphicon glyphicon-pencil', data: {toggle: 'modal', target: '#task_modal'}}
+            %i{class: 'link glyphicon glyphicon-pencil', data: {toggle: 'modal', target: '#task_modal'},
+            'ng-click' => 'before_edit(task)'}
           .col-lg-1.col-md-1.col-sm-1
             %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(project, task)'}
   %div.add_todo
