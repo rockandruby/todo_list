@@ -1,6 +1,6 @@
 .col-lg-10.projects{'ng-if' => 'user.signedIn', 'ng-controller': 'ProjectsController'}
   %h1 MY PROJECTS
-  %div{'ng-repeat' => "project in projects | orderBy: '-id'", class: 'project'}
+  %div{'ng-repeat' => "project in projects | orderBy: '-id'", class: 'project row'}
     .col-lg-12.col-md-12.col-sm-12.head
       .col-lg-1.col-md-1.col-sm-1
         %i{class: 'glyphicon glyphicon-list-alt'}
@@ -33,9 +33,8 @@
             %i{class: 'link glyphicon glyphicon-pencil'}
           .col-lg-1.col-md-1.col-sm-1
             %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(project, task)'}
-    %h3
-      &nbsp
   %div.add_todo
     %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#project_modal'}, 'ng-click' => 'before_add()'} Add TODO list
 
   %div{class: "ng-include: 'modals/project.html'"}
+  %div{class: "ng-include: 'modals/task.html'"}
