@@ -30,9 +30,9 @@
               %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
               'ng-click' => "update_task(project, task, 'down')"}
           .col-lg-1.col-md-1.col-sm-1
-            %i{class: 'glyphicon glyphicon-pencil'}
+            %i{class: 'link glyphicon glyphicon-pencil'}
           .col-lg-1.col-md-1.col-sm-1
-            %i{class: 'glyphicon glyphicon-remove'}
+            %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(project, task)'}
     %h3
       &nbsp
   %div.add_todo

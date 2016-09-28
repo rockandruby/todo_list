@@ -15,6 +15,11 @@ class TasksController < ApplicationController
     render json: @project
   end
 
+  def destroy
+    @task.destroy
+    render json: @project.tasks
+  end
+
   private
 
   def task_params

@@ -17,8 +17,11 @@ app.factory('task', ['$http', '$auth', function($http, $auth){
                 data: {direction: direction, project_id: project_id, id: task_id}
             })
         },
-        delete_task: function(){
-
+        delete_task: function(project_id, task_id){
+            return $http({
+                method: 'DELETE',
+                url: $auth.apiUrl() + '/projects/'+ project_id + '/tasks/' + task_id
+            })
         }
     }
 }]);
