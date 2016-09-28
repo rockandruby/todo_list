@@ -4,6 +4,8 @@
 app.controller('TasksController', ['$scope', 'Flash', 'task', TasksController]);
 
 function TasksController($scope, Flash, task){
+    $scope.task_data = {};
+
     $scope.add_task = function(){
         if(!validate()) return Flash.create('danger', 'Title can\'t be empty!');
         task.add_task($scope.project.id, $scope.task_title)
@@ -14,6 +16,16 @@ function TasksController($scope, Flash, task){
         }, function errorCallback() {
             Flash.create('danger', 'Not authorized!');
         });
+    };
+
+    $scope.update_task = function(project_obj, task_obj, direction){
+      task.update_task(project_obj.id, task_obj.id, direction)
+          .then(function successCallback(response){
+            $scope.project = response.data
+          },
+          function errorCallback(response){
+              console.log(response)
+          })
     };
 
     function validate(){

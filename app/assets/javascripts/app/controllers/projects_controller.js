@@ -5,7 +5,7 @@ app.controller('ProjectsController', ['$scope', 'Flash', 'project', ProjectsCont
 
 function ProjectsController($scope, Flash, project){
 
-    $scope.project_data = {title: ''};
+    $scope.project_data = {};
 
     project.get_projects()
         .then(function successCallback(response) {

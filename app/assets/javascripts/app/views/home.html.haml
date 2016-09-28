@@ -17,16 +17,18 @@
             %input{name: 'title', type: 'text', 'ng-model' => 'task_title', class: 'form-control'}
           .col-lg-2.col-md-2.col-sm-2
             %input{type: 'submit', value: 'Add task', class: 'btn btn-primary'}
-      .col-lg-12.col-md-12.col-sm-12{'ng-repeat' => 'task in project.tasks'}
+      .col-lg-12.col-md-12.col-sm-12{'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
           %input{name: 'is_done', type: 'checkbox'}
         .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'task.title'}
         .col-lg-2.col-md-2.col-sm-2
           .col-lg-1.col-md-1.col-sm-1
             %div
-              %i{class: 'glyphicon glyphicon-chevron-up'}
+              %i{class: 'link glyphicon glyphicon-chevron-up', title: 'Move up',
+               'ng-click' => "update_task(project, task, 'up')"}
             %div
-              %i{class: 'glyphicon glyphicon-chevron-down'}
+              %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
+              'ng-click' => "update_task(project, task, 'down')"}
           .col-lg-1.col-md-1.col-sm-1
             %i{class: 'glyphicon glyphicon-pencil'}
           .col-lg-1.col-md-1.col-sm-1
