@@ -17,7 +17,7 @@ function TasksController($scope, Flash, task) {
     };
 
     $scope.update_task = function (project_obj, task_obj, direction) {
-        task.update_task(project_obj.id, task_obj.id, direction)
+        task.edit_task(project_obj.id, task_obj.id, direction)
             .then(function successCallback(response) {
                 $scope.project = response.data
             })

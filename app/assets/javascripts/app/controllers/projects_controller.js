@@ -24,7 +24,7 @@ function ProjectsController($scope, Flash, project) {
             });
     };
 
-    $scope.edit_project = function () {
+    $scope.update_project = function () {
         if (!validate()) return $scope.error = true;
         project.edit_project($scope.project.id, $scope.project_data.title)
             .then(function successCallback() {
