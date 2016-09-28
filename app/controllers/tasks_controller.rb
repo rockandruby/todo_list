@@ -9,8 +9,8 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    if params[:direction]
-      params[:direction] == 'up' ? @task.move_higher : @task.move_lower
+    if params[:task][:direction]
+      params[:task][:direction] == 'up' ? @task.move_higher : @task.move_lower
     end
     render json: @project
   end
@@ -23,6 +23,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title)
+    params.require(:task).permit(:title, :is_done)
   end
 end

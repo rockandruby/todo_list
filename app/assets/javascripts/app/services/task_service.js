@@ -10,11 +10,11 @@ app.factory('task', ['$http', '$auth', function($http, $auth){
                 data: {title: title}
             })
         },
-        edit_task: function(data){
+        edit_task: function(obj, data){
             return $http({
                 method: 'PATCH',
-                url: $auth.apiUrl() + '/projects/'+ data.project_id + '/tasks/' + data.id,
-                data: data
+                url: $auth.apiUrl() + '/projects/'+ obj.project_id + '/tasks/' + obj.id,
+                data: {task: data}
             })
         },
         delete_task: function(project_id, task_id){

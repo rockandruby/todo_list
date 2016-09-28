@@ -16,15 +16,14 @@ function TasksController($scope, Flash, task) {
             });
     };
 
-    $scope.update_task = function (project_obj, task_obj, direction) {
-        $scope.task_data = {
-          project_id: project_obj.id,
-          id: task_obj.id,
-          direction: direction
-        };
-        task.edit_task($scope.task_data)
+    $scope.update_task = function (task_obj) {
+        task.edit_task(task_obj, $scope.task_data)
             .then(function successCallback(response) {
-                $scope.project = response.data
+                $scope.project = response.data;
+                if($scope.task_data.title != null){
+                    Flash.create('success', 'Task updated!');
+                    angular.element('#task_modal').modal('hide');
+                }
             })
     };
 
@@ -35,10 +34,6 @@ function TasksController($scope, Flash, task) {
                 $scope.project.tasks = response.data
             })
     };
-
-    //$scope.before_edit = function (task) {
-    //    $scope.task_data.title =123
-    //};
 
     function validate() {
         return $scope.task_title != null && $scope.task_title.length > 0
