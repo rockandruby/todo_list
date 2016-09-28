@@ -5,6 +5,8 @@ app.controller('ProjectsController', ['$scope', 'Flash', 'project', ProjectsCont
 
 function ProjectsController($scope, Flash, project){
 
+    $scope.project_data = {title: ''};
+
     project.get_projects()
         .then(function successCallback(response) {
         $scope.projects = response.data;
@@ -12,7 +14,7 @@ function ProjectsController($scope, Flash, project){
 
     $scope.add_project = function(){
         if(!validate()) return $scope.error = true;
-        project.add_project($scope.title)
+        project.add_project($scope.project_data.title)
             .then(function successCallback(response) {
             angular.element('#project_modal').modal('hide');
             $scope.projects.push(response.data);
@@ -24,9 +26,9 @@ function ProjectsController($scope, Flash, project){
 
     $scope.edit_project = function(){
         if(!validate()) return $scope.error = true;
-        project.edit_project($scope.project.id, $scope.title)
+        project.edit_project($scope.project.id, $scope.project_data.title)
             .then(function successCallback() {
-            $scope.project.title = $scope.title;
+            $scope.project.title = $scope.project_data.title;
             angular.element('#project_modal').modal('hide');
             Flash.create('success', 'Project updated!');
         }, function errorCallback() {
@@ -51,15 +53,16 @@ function ProjectsController($scope, Flash, project){
     $scope.before_edit = function(project_obj){
         $scope.error = false;
         $scope.project = project_obj;
-        $scope.title = project_obj.title
+        $scope.project_data.title = project_obj.title
     };
 
     $scope.before_add = function(){
         $scope.error = false;
-        $scope.title = $scope.project = null;
+        $scope.project_data.title = $scope.project = null;
     };
 
     function validate(){
-        return $scope.title != null && $scope.title.length > 0
+        title = $scope.project_data.title;
+        return title != null && title.length > 0
     }
 }
