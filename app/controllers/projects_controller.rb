@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    render json: @project.destroy
+    @project.destroy
+    render json: current_user.projects
   end
 end

@@ -40,14 +40,8 @@ function ProjectsController($scope, Flash, project){
         project.delete_project(project_obj.id)
             .then(function successCallback(response) {
             Flash.create('success', 'Project deleted!');
-            for(i = 0; i < $scope.projects.length; i++){
-                if($scope.projects[i].id == response.data.id){
-                    $scope.projects.splice(i, 1)
-                }
-            }
-        }, function errorCallback() {
-            Flash.create('danger', 'You\'re not authorized!');
-        });
+            $scope.projects = response.data
+        })
     };
 
     $scope.before_edit = function(project_obj){

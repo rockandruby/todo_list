@@ -23,10 +23,10 @@
         .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'task.title'}
         .col-lg-2.col-md-2.col-sm-2
           .col-lg-1.col-md-1.col-sm-1
-            %div
+            %div{'ng-if' => '!$first'}
               %i{class: 'link glyphicon glyphicon-chevron-up', title: 'Move up',
                'ng-click' => "update_task(project, task, 'up')"}
-            %div
+            %div{'ng-if' => '!$last'}
               %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
               'ng-click' => "update_task(project, task, 'down')"}
           .col-lg-1.col-md-1.col-sm-1

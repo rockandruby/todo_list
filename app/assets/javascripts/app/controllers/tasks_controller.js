@@ -13,8 +13,6 @@ function TasksController($scope, Flash, task){
             $scope.project.tasks.push(response.data);
             Flash.create('success', 'New task added!');
             $scope.task_title = null
-        }, function errorCallback() {
-            Flash.create('danger', 'Not authorized!');
         });
     };
 
@@ -22,9 +20,6 @@ function TasksController($scope, Flash, task){
       task.update_task(project_obj.id, task_obj.id, direction)
           .then(function successCallback(response){
             $scope.project = response.data
-          },
-          function errorCallback(response){
-              console.log(response)
           })
     };
 
