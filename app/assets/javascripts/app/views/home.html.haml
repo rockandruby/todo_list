@@ -2,21 +2,20 @@
   %h1 MY PROJECTS
   %div{'ng-repeat' => "project in projects | orderBy: '-id'", class: 'project row'}
     .col-lg-12.col-md-12.col-sm-12.head
-      .col-lg-1.col-md-1.col-sm-1
-        %i{class: 'glyphicon glyphicon-list-alt'}
       .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'project.title'}
       .col-lg-1.col-md-1.col-sm-1
-        %i{class: 'link glyphicon glyphicon-pencil', data: {toggle: 'modal', target: '#project_modal'},
-         'ng-click' => 'before_edit(project)'}
+        %md-icon.material-icons{'ng-click' => 'toggle_projects = !toggle_projects', 'ng-init' => 'toggle_projects = true'} list
       .col-lg-1.col-md-1.col-sm-1
-        %i{class: 'glyphicon glyphicon-remove link', 'ng-click' => 'delete_project(project)'}
+        %md-icon.material-icons{data: {toggle: 'modal', target: '#project_modal'}, 'ng-click' => 'before_edit(project)'} mode_edit
+      .col-lg-1.col-md-1.col-sm-1
+        %md-icon.material-icons{'ng-click' => 'delete_project(project)'} delete_forever
     %div{'ng-controller': 'TasksController'}
       .col-lg-12.col-md-12.col-sm-12
         .col-lg-10.col-md-10.col-sm-10
           %input{name: 'title', type: 'text', 'ng-model' => 'title', class: 'form-control'}
         .col-lg-2.col-md-2.col-sm-2
           %button.btn.btn-primary{:type => "button", 'ng-click': "add_task()"} Add task
-      .col-lg-12.col-md-12.col-sm-12{'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
+      .col-lg-12.col-md-12.col-sm-12{'ng-show' => 'toggle_projects', 'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
           %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done',
            'ng-click' => 'task_data.task = task; update_task()'}
@@ -24,20 +23,20 @@
         .col-lg-3.col-md-3.col-sm-3
           .col-lg-12.col-md-12.col-sm-12
             .col-lg-4.col-md-4.col-sm-4
-              %div{'ng-if' => '!$first'}
-              %i{class: 'link glyphicon glyphicon-chevron-up', title: 'Move up',
-               'ng-click' => "task_data.direction = 'up'; change_position(task)"}
-              %div{'ng-if' => '!$last'}
-                %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
-                'ng-click' => "task_data.direction = 'down'; change_position(task)"}
+              %div{'ng-show' => '!$first'}
+                %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'up'; change_position(task)"} keyboard_arrow_up
+              %div{'ng-show' => '!$last'}
+                %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'down';change_position(task)"} keyboard_arrow_down
             .col-lg-4.col-md-4.col-sm-4
-              %i{class: 'link glyphicon glyphicon-pencil', data: {toggle: 'modal', target: '#task_modal'},
-             'ng-click' => 'task_data.task = task; task_data.error = false'}
+              %md-icon.material-icons{data: {toggle: 'modal', target: '#task_modal'},
+              'ng-click' => 'task_data.task = task; task_data.error = false'} mode_edit
             .col-lg-4.col-md-4.col-sm-4
-              %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(task)'}
+              %md-icon.material-icons{'ng-click' => 'delete_task(task)'} delete_forever
+
           .col-lg-12.col-md-12.col-sm-12
-            %md-datepicker{'ng-model' => 'deadline', 'ng-init' => 'deadline = StrToDate(task.deadline)',
-           'ng-change' => 'task_data.task = task; task.deadline = deadline.toString(); update_task()'}
+            %md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline',
+             'ng-init' => 'deadline = StrToDate(task.deadline)',
+             'ng-change' => 'task_data.task = task; task.deadline = deadline.toString(); update_task()'}
 
       %div{class: "ng-include: 'modals/task.html'"}
 
