@@ -6,6 +6,7 @@ app.controller('ProjectsController', ['$scope', 'Flash', 'project', ProjectsCont
 function ProjectsController($scope, Flash, project) {
 
     $scope.project_data = {};
+    $scope.task_data = {};
 
     project.get_projects()
         .then(function successCallback(response) {

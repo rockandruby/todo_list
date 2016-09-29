@@ -4,7 +4,6 @@
 app.controller('TasksController', ['$scope', 'Flash', 'task', TasksController]);
 
 function TasksController($scope, Flash, task) {
-    $scope.task_data = {};
 
     $scope.add_task = function () {
         data = {title: $scope.title};

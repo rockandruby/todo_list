@@ -12,14 +12,14 @@
         %i{class: 'glyphicon glyphicon-remove link', 'ng-click' => 'delete_project(project)'}
     %div{'ng-controller': 'TasksController'}
       .col-lg-12.col-md-12.col-sm-12
-        %form{'ng-submit' => 'add_task()'}
-          .form-group.col-lg-10.col-md-10.col-sm-10
-            %input{name: 'title', type: 'text', 'ng-model' => 'title', class: 'form-control'}
-          .col-lg-2.col-md-2.col-sm-2
-            %input{type: 'submit', value: 'Add task', class: 'btn btn-primary'}
+        .col-lg-10.col-md-10.col-sm-10
+          %input{name: 'title', type: 'text', 'ng-model' => 'title', class: 'form-control'}
+        .col-lg-2.col-md-2.col-sm-2
+          %button.btn.btn-primary{:type => "button", 'ng-click': "add_task()"} Add task
       .col-lg-12.col-md-12.col-sm-12{'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
-          %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done', 'ng-click' => 'task_data.task = task; update_task()'}
+          %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done',
+           'ng-click' => 'task_data.task = task; update_task()'}
         .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'task.title'}
         .col-lg-2.col-md-2.col-sm-2
           .col-lg-1.col-md-1.col-sm-1
@@ -36,6 +36,7 @@
             %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(task)'}
       %div{class: "ng-include: 'modals/task.html'"}
   %div.add_todo
-    %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#project_modal'}, 'ng-click' => 'before_add()'} Add TODO list
+    %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#project_modal'},
+     'ng-click' => 'before_add()'} Add TODO list
 
   %div{class: "ng-include: 'modals/project.html'"}

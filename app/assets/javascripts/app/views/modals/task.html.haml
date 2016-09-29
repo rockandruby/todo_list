@@ -11,5 +11,4 @@
         %input{name: 'title', type: 'text', 'ng-model' => 'task_data.task.title', class: 'form-control'}
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button",
-         'ng-click': "update_task(task_data.task)"} Edit task
+        %button.btn.btn-primary{:type => "button", 'ng-click': "update_task(task_data.task)"} Edit task
