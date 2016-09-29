@@ -1,7 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "angular-flash-alert/dist/angular-flash.min";
-@import "projects";
-@import "home";
 @import "angular-material/angular-material.min";
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import "home";
+@import "projects";
+@import "tasks";

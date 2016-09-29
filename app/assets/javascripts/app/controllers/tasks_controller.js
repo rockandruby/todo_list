@@ -34,15 +34,19 @@ function TasksController($scope, Flash, task) {
             })
     };
 
-    $scope.change_position = function(task_obj){
+    $scope.change_position = function (task_obj) {
         task.prioritise(task_obj, $scope.task_data.direction)
-            .then(function successCallback(response){
+            .then(function successCallback(response) {
                 $scope.project = response.data
             })
     };
 
     $scope.StrToDate = function (str) {
-        if(str != null) return new Date(str);
+        if (str != null) return new Date(str);
+    };
+
+    $scope.check_deadline = function (obj) {
+        if (obj.deadline != null) return new Date() > new Date(obj.deadline)
     };
 
     function validate(obj) {

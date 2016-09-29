@@ -15,7 +15,8 @@
           %input{name: 'title', type: 'text', 'ng-model' => 'title', class: 'form-control'}
         .col-lg-2.col-md-2.col-sm-2
           %button.btn.btn-primary{:type => "button", 'ng-click': "add_task()"} Add task
-      .col-lg-12.col-md-12.col-sm-12{'ng-show' => 'toggle_projects', 'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
+      .col-lg-12.col-md-12.col-sm-12{'ng-show' => 'toggle_projects', 'ng-class' => '{deadline: check_deadline(task)}',
+       'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
           %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done',
            'ng-click' => 'task_data.task = task; update_task()'}
