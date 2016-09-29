@@ -8,7 +8,7 @@
         .error{'ng-show' => 'task_data.error'}
           Title can't be empty
       .modal-body
-        %input{name: 'title', type: 'text', 'ng-model' => 'task_data.task.title', class: 'form-control'}
+        %textarea{name: 'title', type: 'text', 'ng-model' => 'task_data.task.title', class: 'form-control'}
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
         %button.btn.btn-primary{:type => "button", 'ng-click': "update_task(task_data.task)"} Edit task

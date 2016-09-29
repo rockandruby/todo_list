@@ -20,21 +20,27 @@
         .col-lg-1.col-md-1.col-sm-1
           %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done',
            'ng-click' => 'task_data.task = task; update_task()'}
-        .col-lg-9.col-md-9.col-sm-9{'ng-bind' => 'task.title'}
-        .col-lg-2.col-md-2.col-sm-2
-          .col-lg-1.col-md-1.col-sm-1
-            %div{'ng-if' => '!$first'}
+        .col-lg-8.col-md-8.col-sm-8{'ng-bind' => 'task.title'}
+        .col-lg-3.col-md-3.col-sm-3
+          .col-lg-12.col-md-12.col-sm-12
+            .col-lg-4.col-md-4.col-sm-4
+              %div{'ng-if' => '!$first'}
               %i{class: 'link glyphicon glyphicon-chevron-up', title: 'Move up',
                'ng-click' => "task_data.direction = 'up'; change_position(task)"}
-            %div{'ng-if' => '!$last'}
-              %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
-              'ng-click' => "task_data.direction = 'down'; change_position(task)"}
-          .col-lg-1.col-md-1.col-sm-1
-            %i{class: 'link glyphicon glyphicon-pencil', data: {toggle: 'modal', target: '#task_modal'},
-            'ng-click' => 'task_data.task = task; task_data.error = false'}
-          .col-lg-1.col-md-1.col-sm-1
-            %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(task)'}
+              %div{'ng-if' => '!$last'}
+                %i{class: 'link glyphicon glyphicon-chevron-down', title: 'Move down',
+                'ng-click' => "task_data.direction = 'down'; change_position(task)"}
+            .col-lg-4.col-md-4.col-sm-4
+              %i{class: 'link glyphicon glyphicon-pencil', data: {toggle: 'modal', target: '#task_modal'},
+             'ng-click' => 'task_data.task = task; task_data.error = false'}
+            .col-lg-4.col-md-4.col-sm-4
+              %i{class: 'link glyphicon glyphicon-remove', 'ng-click' => 'delete_task(task)'}
+          .col-lg-12.col-md-12.col-sm-12
+            %md-datepicker{'ng-model' => 'deadline', 'ng-init' => 'deadline = StrToDate(task.deadline)',
+           'ng-change' => 'task_data.task = task; task.deadline = deadline.toString(); update_task()'}
+
       %div{class: "ng-include: 'modals/task.html'"}
+
   %div.add_todo
     %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#project_modal'},
      'ng-click' => 'before_add()'} Add TODO list

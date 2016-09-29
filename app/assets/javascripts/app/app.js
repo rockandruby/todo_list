@@ -5,7 +5,8 @@ var app = angular.module('app', [
     'ui.router',
     'ng-token-auth',
     'templates',
-    'ngFlash'
+    'ngFlash',
+    'ngMaterial'
 ]);
 
 app.config(['$authProvider', function($authProvider){

@@ -18,6 +18,10 @@
 //= require angular-ui-router/release/angular-ui-router.min
 //= require ng-token-auth/dist/ng-token-auth.min
 //= require angular-flash-alert/dist/angular-flash.min
+//= require angular-aria/angular-aria.min
+//= require angular-animate/angular-animate.min
+//= require angular-animate/angular-animate.min
+//= require angular-material/angular-material.min
 //= require app/app
 //= require app/router
 //= require_tree ./app/services

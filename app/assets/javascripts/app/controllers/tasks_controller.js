@@ -41,6 +41,10 @@ function TasksController($scope, Flash, task) {
             })
     };
 
+    $scope.StrToDate = function (str) {
+        if(str != null) return new Date(str);
+    };
+
     function validate(obj) {
         return obj.title != null && obj.title.length > 0
     }
