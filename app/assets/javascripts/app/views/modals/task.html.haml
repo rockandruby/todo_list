@@ -5,10 +5,10 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
         %h4#myModalLabel.modal-title Enter task title
-        .error{'ng-show' => 'error'}
+        .error{'ng-show' => 'task_data.error'}
           Title can't be empty
       .modal-body
-        %input{name: 'title', type: 'text', 'ng-model' => 'task_data.title', class: 'form-control'}
+        %input{name: 'title', type: 'text', 'ng-model' => 'task_data.task.title', class: 'form-control'}
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
         %button.btn.btn-primary{:type => "button",

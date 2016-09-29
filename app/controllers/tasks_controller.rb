@@ -9,15 +9,15 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    if params[:task][:direction]
-      params[:task][:direction] == 'up' ? @task.move_higher : @task.move_lower
-    end
-    render json: @project
   end
 
   def destroy
     @task.destroy
-    render json: @project.tasks
+  end
+
+  def prioritise
+    params[:direction] == 'up' ? @task.move_higher : @task.move_lower
+    render json: @project
   end
 
   private

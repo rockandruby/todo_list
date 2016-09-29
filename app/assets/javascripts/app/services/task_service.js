@@ -1,26 +1,33 @@
 /**
  * Created by user on 27.09.16.
  */
-app.factory('task', ['$http', '$auth', function($http, $auth){
+app.factory('task', ['$http', '$auth', function ($http, $auth) {
     return {
-        add_task: function(project_id, title){
+        add_task: function (project, task) {
             return $http({
                 method: 'POST',
-                url: $auth.apiUrl() + '/projects/'+ project_id + '/tasks',
-                data: {title: title}
+                url: $auth.apiUrl() + '/projects/' + project.id + '/tasks',
+                data: {task: task}
             })
         },
-        edit_task: function(obj, data){
+        edit_task: function (task) {
             return $http({
-                method: 'PATCH',
-                url: $auth.apiUrl() + '/projects/'+ obj.project_id + '/tasks/' + obj.id,
-                data: {task: data}
+                method: 'PUT',
+                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id,
+                data: {task: task}
             })
         },
-        delete_task: function(project_id, task_id){
+        delete_task: function (task) {
             return $http({
                 method: 'DELETE',
-                url: $auth.apiUrl() + '/projects/'+ project_id + '/tasks/' + task_id
+                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id
+            })
+        },
+        prioritise: function (task, direction) {
+            return $http({
+                method: 'PATCH',
+                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id + '/prioritise',
+                data: {direction: direction}
             })
         }
     }

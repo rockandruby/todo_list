@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :projects do
     resources :tasks
+    patch '/tasks/:id/prioritise', to: 'tasks#prioritise'
   end
 end
