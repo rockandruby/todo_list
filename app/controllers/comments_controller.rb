@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment.file = params[:comment][:file]
     @comment.update!(comment_params)
     render json: @comment
   end

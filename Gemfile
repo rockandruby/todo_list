@@ -32,6 +32,7 @@ gem 'angular-rails-templates'
 gem 'cancancan', '~> 1.10'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'acts_as_list'
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -36,7 +36,8 @@
               'ng-click' => 'task_data.task = task; task_data.error = false'} mode_edit
             .col-lg-4.col-md-4.col-sm-4
               %md-icon.material-icons{'ng-click' => 'delete_task(task)'} delete_forever
-              %md-icon.material-icons{data: {toggle: 'modal', target: '#comments_modal'}, 'ng-click' => 'task_data.task = task'} comment
+              %md-icon.material-icons{data: {toggle: 'modal', target: '#comments_modal'},
+               'ng-click' => 'task_data.task = task'} comment
 
           .col-lg-12.col-md-12.col-sm-12
             %md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline',

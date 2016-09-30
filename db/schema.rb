@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160930061755) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "title"
+    t.text     "title"
     t.string   "file"
     t.integer  "task_id"
     t.datetime "created_at", null: false

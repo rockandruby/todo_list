@@ -10,18 +10,24 @@
       .modal-body
         %md-content
           %md-list
-            %md-list-item.md-3-line{"ng-repeat" => "comment in task_data.task.comments"}
+            %md-list-item.md-3-line{"ng-repeat" => "comment in task_data.task.comments", class: 'row'}
               .md-list-item-text
                 %button.close{"aria-label" => "Close",:type => "button"}
                   %md-icon.material-icons{'ng-click' => 'delete_comment(comment)'} delete_forever
-                %h4{'ng-bind' => 'comment.title'}
+                %div{'ng-bind' => 'comment.title'}
+                %div{'ng-show' => 'comment.file.url != null'}
+                  %md-icon.material-icons file_download
+                  %a{"ng-href" => "{{comment.file.url}}", :target => "_blank"}Download attachment
               %md-divider{"ng-if" => "!$last"}
             %form
+              .error
+                {{error}}
               .form-group
                 %label{:for => "comment_body"} Enter your comment
                 %textarea#comment_body.form-control{'ng-model' => 'comment_data.title'}
               .form-group
-                %input#exampleInputFile{:type => "file", 'file-input' => "comment_data.file"}
+                %input#exampleInputFile{:type => "file", 'ngf-select' => '',
+                 'ng-model' => "comment_data.file", 'name' => "file"}
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
         %button.btn.btn-primary{:type => "button", 'ng-click' => 'add_comment()'} Add comment
