@@ -6,4 +6,15 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
   end
+
+  def create
+    @comment.update!(comment_params)
+    render json: @comment
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:title, :file)
+  end
 end

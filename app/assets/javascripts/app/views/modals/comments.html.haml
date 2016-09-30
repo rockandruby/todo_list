@@ -19,10 +19,9 @@
             %form
               .form-group
                 %label{:for => "comment_body"} Enter your comment
-                %textarea#comment_body.form-control
+                %textarea#comment_body.form-control{'ng-model' => 'comment_data.title'}
               .form-group
-                %input#exampleInputFile{:type => "file"}
-
+                %input#exampleInputFile{:type => "file", 'file-input' => "comment_data.file"}
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button"} Add comment
+        %button.btn.btn-primary{:type => "button", 'ng-click' => 'add_comment()'} Add comment

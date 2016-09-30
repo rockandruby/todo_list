@@ -13,8 +13,8 @@ app.factory('comment', ['$http', '$auth', function ($http, $auth) {
         add_comment: function(task, comment){
             return $http({
                 method: 'POST',
-                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/'
-                + task.id + '/comments/' + comment.id
+                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id + '/comments/',
+                data: {comment: comment}
             })
         }
     }
