@@ -1,0 +1,27 @@
+#comments_modal.modal.fade{"aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h3#myModalLabel.modal-title Comments
+        %h4{'ng-bind' => 'task_data.task.title'}
+      .modal-body
+        %md-content
+          %md-list
+            %md-list-item.md-3-line{"ng-repeat" => "comment in task_data.task.comments"}
+              .md-list-item-text
+                %button.close{"aria-label" => "Close",:type => "button"}
+                  %md-icon.material-icons{'ng-click' => 'delete_task(comment)'} delete_forever
+                %h4{'ng-bind' => 'comment.title'}
+              %md-divider{"ng-if" => "!$last"}
+            %form
+              .form-group
+                %label{:for => "comment_body"} Enter your comment
+                %textarea#comment_body.form-control
+              .form-group
+                %input#exampleInputFile{:type => "file"}
+
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary{:type => "button"} Add comment
