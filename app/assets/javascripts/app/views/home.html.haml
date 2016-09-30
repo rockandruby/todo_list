@@ -23,27 +23,28 @@
         .col-lg-1.col-md-1.col-sm-1
           %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done',
            'ng-click' => 'task_data.task = task; update_task()'}
-        .col-lg-8.col-md-8.col-sm-8{'ng-bind' => 'task.title'}
-        .col-lg-3.col-md-3.col-sm-3
-          .col-lg-12.col-md-12.col-sm-12
-            .col-lg-4.col-md-4.col-sm-4
-              %div{'ng-show' => '!$first'}
-                %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'up'; change_position(task)"} keyboard_arrow_up
-              %div{'ng-show' => '!$last'}
-                %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'down';change_position(task)"} keyboard_arrow_down
-            .col-lg-4.col-md-4.col-sm-4
-              %md-icon.material-icons{data: {toggle: 'modal', target: '#task_modal'},
-              'ng-click' => 'task_data.task = task; task_data.error = false'} mode_edit
-            .col-lg-4.col-md-4.col-sm-4
-              %md-icon.material-icons{'ng-click' => 'delete_task(task)'} delete_forever
-              %md-icon.material-icons{data: {toggle: 'modal', target: '#comments_modal'},
-               'ng-click' => 'task_data.task = task'} comment
-
-          .col-lg-12.col-md-12.col-sm-12
-            %md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline',
+        .col-lg-7.col-md-7.col-sm-7{'ng-bind' => 'task.title'}
+        .col-lg-4.col-md-4.col-sm-4
+          .col-lg-1.col-md-1.col-sm-1
+            %div{'ng-show' => '!$first'}
+              %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'up'; change_position(task)"} keyboard_arrow_up
+            %div{'ng-show' => '!$last'}
+              %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'down';change_position(task)"} keyboard_arrow_down
+          %md-menu{"md-offset" => "0 -7"}
+            %md-button.md-icon-button{"aria-label" => "Open demo menu", "ng-click" => "$mdOpenMenu($event)"}
+              %md-icon.material-icons list
+            %md-menu-content{:width => "2"}
+              %md-menu-item
+                %md-icon.material-icons{data: {toggle: 'modal', target: '#task_modal'},
+                'ng-click' => 'task_data.task = task; task_data.error = false'} mode_edit
+              %md-menu-item
+                %md-icon.material-icons{'ng-click' => 'delete_task(task)'} delete_forever
+              %md-menu-item
+                %md-icon.material-icons{data: {toggle: 'modal', target: '#comments_modal'},
+                 'ng-click' => 'task_data.task = task'} comment
+          %md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline',
              'ng-init' => 'deadline = StrToDate(task.deadline)',
              'ng-change' => 'task_data.task = task; task.deadline = deadline.toString(); update_task()'}
-
       %div{class: "ng-include: 'modals/task.html'"}
       %div{class: "ng-include: 'modals/comments.html'"}
 
