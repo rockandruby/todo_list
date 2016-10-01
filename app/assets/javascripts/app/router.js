@@ -8,6 +8,7 @@ function HttpConfig($httpProvider, $locationProvider){
     if (window.history && window.history.pushState) {
         $locationProvider.html5Mode(true);
     }
+    $httpProvider.interceptors.push('authInterceptor');
 }
 
 function Routes($stateProvider, $urlRouterProvider){
