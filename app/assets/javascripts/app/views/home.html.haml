@@ -1,4 +1,5 @@
-.col-lg-10.projects{'ng-if' => 'user.signedIn', 'ng-controller': 'ProjectsController'}
+%div{class: "ng-include: 'partials/greeting.html'", 'ng-if' => '!user.signedIn'}
+.col-lg-12.col-md-12.col-sm-12.projects{'ng-if' => 'user.signedIn', 'ng-controller': 'ProjectsController'}
   %h3
     %img{'ng-src'=> "{{user.image}}"} &nbsp {{user.name}}
   %h1 MY PROJECTS
@@ -13,13 +14,14 @@
        'ng-class' => '{deadline: check_deadline(task)}',
        'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
-          %input{name: 'is_done', type: 'checkbox', 'ng-model' => 'task.is_done',
+          %md-checkbox{name: 'is_done', 'ng-model' => 'task.is_done',
            'ng-click' => 'task_data.task = task; update_task()'}
         .col-lg-7.col-md-7.col-sm-7{'ng-bind' => 'task.title'}
         .col-lg-4.col-md-4.col-sm-4
           %div{class: "ng-include: 'partials/task_instruments.html'"}
   %div.add_todo
-    %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#add_project_modal'}} Add TODO list
+    %button{class: 'btn btn-primary btn-lg',
+     data: {toggle: 'modal', target: '#add_project_modal'}} Add TODO list
   %div{class: "ng-include: 'modals/add_project.html'"}
   %div{class: "ng-include: 'modals/edit_project.html'"}
   %div{class: "ng-include: 'modals/comments.html'"}
