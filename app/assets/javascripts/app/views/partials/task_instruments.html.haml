@@ -15,6 +15,5 @@
     %md-menu-item
       %md-icon.material-icons{data: {toggle: 'modal', target: '#comments_modal'},
                  'ng-click' => 'task_data.task = task'} comment
-%md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline',
-             'ng-init' => 'deadline = StrToDate(task.deadline)',
-             'ng-change' => 'task_data.task = task; task.deadline = deadline.toString(); update_task()'}
+%md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline','ng-init' => 'deadline = StrToDate(task.deadline)',
+ 'ng-change' => 'task_data.task = task; task.deadline = deadline.toString(); update_task()'}

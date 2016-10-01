@@ -8,6 +8,7 @@
       %div{class: "ng-include: 'partials/project_instruments.html'"}
     %div{'ng-controller': 'TasksController'}
       %div{class: "ng-include: 'partials/add_task_form.html'"}
+      %div{class: "ng-include: 'modals/task.html'"}
       .col-lg-12.col-md-12.col-sm-12{'ng-show' => 'project.toggle_tasks',
        'ng-class' => '{deadline: check_deadline(task)}',
        'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
@@ -21,5 +22,4 @@
     %button{class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#add_project_modal'}} Add TODO list
   %div{class: "ng-include: 'modals/add_project.html'"}
   %div{class: "ng-include: 'modals/edit_project.html'"}
-  %div{class: "ng-include: 'modals/task.html'"}
   %div{class: "ng-include: 'modals/comments.html'"}

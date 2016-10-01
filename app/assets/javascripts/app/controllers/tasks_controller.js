@@ -35,7 +35,7 @@ function TasksController($scope, Flash, task) {
     $scope.change_position = function (task_obj) {
         task.prioritise(task_obj, $scope.task_data.direction)
             .then(function successCallback(response) {
-                $scope.project = response.data
+                $scope.project.tasks = response.data.tasks
             })
     };
 
