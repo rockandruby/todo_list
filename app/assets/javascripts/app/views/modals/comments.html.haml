@@ -19,15 +19,16 @@
                   %md-icon.material-icons file_download
                   %a{"ng-href" => "{{comment.file.url}}", :target => "_blank"}Download attachment
               %md-divider{"ng-if" => "!$last"}
-            %form
-              .error
-                {{error}}
+            %form{name: 'Form'}
               .form-group
                 %label{:for => "comment_body"} Enter your comment
-                %textarea#comment_body.form-control{'ng-model' => 'comment_data.title'}
+                %textarea#comment_body.form-control{'ng-model' => 'comment_data.title',
+                 name: 'title', validator: 'required', 'valid-method' => 'submit-only',
+                  'required-error-message' => "Title required", 'title-error-message' => "Error title"}
               .form-group
                 %input#exampleInputFile{:type => "file", 'ngf-select' => '',
                  'ng-model' => "comment_data.file", 'name' => "file"}
+              .form-group
+                %button.btn.btn-primary{'ng-click' => 'comment_data.submit()', 'validation-submit' => 'Form'} Add comment
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button", 'ng-click' => 'add_comment()'} Add comment

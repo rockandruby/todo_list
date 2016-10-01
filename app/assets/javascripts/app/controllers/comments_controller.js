@@ -13,16 +13,13 @@ function CommentsController($scope, comment) {
             })
     };
 
-    $scope.add_comment = function () {
-        if(!validate($scope.comment_data)) return $scope.error = 'Fill in required fields!';
-        comment.add_comment($scope.task_data.task, $scope.comment_data)
-            .then(function successCallback(response) {
-                $scope.task_data.task.comments.push(response.data);
-                $scope.comment_data = null
-            })
+    $scope.comment_data = {
+        submit: function () {
+            comment.add_comment($scope.task_data.task, $scope.comment_data)
+                .then(function successCallback(response) {
+                    $scope.task_data.task.comments.push(response.data);
+                    $scope.comment_data.title = null
+                })
+        }
     };
-
-    function validate(comment_obj){
-        return comment_obj.title != null && comment_obj.title.length > 0
-    }
 }

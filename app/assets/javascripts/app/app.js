@@ -7,7 +7,9 @@ var app = angular.module('app', [
     'templates',
     'ngFlash',
     'ngMaterial',
-    'ngFileUpload'
+    'ngFileUpload',
+    'validation',
+    'validation.rule'
 ]);
 
 app.config(['$authProvider', function($authProvider){
@@ -19,4 +21,8 @@ app.config(['$authProvider', function($authProvider){
 
 app.config(['FlashProvider', function(FlashProvider){
     FlashProvider.setTimeout(3000);
+}]);
+
+app.config(['$validationProvider', function ($validationProvider) {
+    $validationProvider.showSuccessMessage = false
 }]);

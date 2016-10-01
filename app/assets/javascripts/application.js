@@ -22,6 +22,8 @@
 //= require angular-animate/angular-animate.min
 //= require angular-animate/angular-animate.min
 //= require angular-material/angular-material.min
+//= require angular-validation/dist/angular-validation.min
+//= require angular-validation/dist/angular-validation-rule.min
 //= require ng-file-upload/dist/ng-file-upload.min
 //= require app/app
 //= require app/router
