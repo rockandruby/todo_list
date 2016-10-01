@@ -1,0 +1,12 @@
+#add_project_modal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-body
+        %form{name: 'add_project_form'}
+          .form-group
+            %label{:for => "add_project_body"} Enter project title
+            %input#add_project_body{name: 'title', type: 'text', 'ng-model' => 'project_data.title', class: 'form-control',
+            validator: 'required', 'valid-method' => 'submit-only', 'required-error-message' => "Title required"}
+          .form-group
+            %button.btn.btn-primary{'ng-click' => 'add_project()', 'validation-submit' => 'add_project_form'} Add project
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

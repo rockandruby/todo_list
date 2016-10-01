@@ -9,11 +9,11 @@ app.factory('project', ['$http', '$auth', function($http, $auth){
                 url: $auth.apiUrl() + '/projects'
             })
         },
-        add_project: function(title){
+        add_project: function(project){
             return $http({
                 method: 'POST',
                 url: $auth.apiUrl() + '/projects',
-                data: {title: title}
+                data: {project: project}
             })
         },
         edit_project: function(id, title){

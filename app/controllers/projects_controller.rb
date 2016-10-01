@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    render json: current_user.projects.create!(title: params[:title])
+    render json: current_user.projects.create(project_params)
   end
 
   def update
@@ -17,5 +17,11 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     render json: current_user.projects
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:title)
   end
 end
