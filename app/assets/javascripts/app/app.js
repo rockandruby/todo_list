@@ -14,7 +14,7 @@ var app = angular.module('app', [
 
 app.config(['$authProvider', function($authProvider){
     $authProvider.configure({
-        apiUrl: 'https://angular-todolist.herokuapp.com',
+        apiUrl: 'http://localhost:3000',
         omniauthWindowType: 'newWindow'
     });
 }]);
