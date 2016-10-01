@@ -10,11 +10,7 @@
       %md-icon.material-icons{data: {toggle: 'modal', target: '#project_modal'}, 'ng-click' => 'before_edit(project)'} mode_edit
       %md-icon.material-icons{'ng-click' => 'delete_project(project)'} delete_forever
     %div{'ng-controller': 'TasksController'}
-      .col-lg-12.col-md-12.col-sm-12
-        .col-lg-10.col-md-10.col-sm-10
-          %input{name: 'title', type: 'text', 'ng-model' => 'title', class: 'form-control'}
-        .col-lg-2.col-md-2.col-sm-2
-          %button.btn.btn-primary{:type => "button", 'ng-click': "add_task()"} Add task
+      %div{class: "ng-include: 'partials/add_task_form.html'"}
       .col-lg-12.col-md-12.col-sm-12{'ng-show' => 'toggle_projects', 'ng-class' => '{deadline: check_deadline(task)}',
        'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
@@ -33,7 +29,7 @@
             %md-menu-content{:width => "2"}
               %md-menu-item
                 %md-icon.material-icons{data: {toggle: 'modal', target: '#task_modal'},
-                'ng-click' => 'task_data.task = task; task_data.error = false'} mode_edit
+                'ng-click' => 'task_data.task = task'} mode_edit
               %md-menu-item
                 %md-icon.material-icons{'ng-click' => 'delete_task(task)'} delete_forever
               %md-menu-item

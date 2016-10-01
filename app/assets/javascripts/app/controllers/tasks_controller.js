@@ -6,18 +6,16 @@ app.controller('TasksController', ['$scope', 'Flash', 'task', TasksController]);
 function TasksController($scope, Flash, task) {
 
     $scope.add_task = function () {
-        data = {title: $scope.title};
-        if (!validate(data)) return Flash.create('danger', 'Title can\'t be empty!');
+        var data = {title: $scope.title};
         task.add_task($scope.project, data)
             .then(function successCallback(response) {
                 $scope.project.tasks.push(response.data);
                 Flash.create('success', 'New task added!');
-                delete $scope.title
+                $scope.title = null
             });
     };
 
     $scope.update_task = function () {
-        if (!validate($scope.task_data.task)) return $scope.task_data.error = true;
         task.edit_task($scope.task_data.task)
             .then(function successCallback() {
                 angular.element('#task_modal').modal('hide');
@@ -48,8 +46,4 @@ function TasksController($scope, Flash, task) {
     $scope.check_deadline = function (obj) {
         if (obj.deadline != null) return new Date() > new Date(obj.deadline)
     };
-
-    function validate(obj) {
-        return obj.title != null && obj.title.length > 0
-    }
 }

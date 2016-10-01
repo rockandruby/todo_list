@@ -1,0 +1,7 @@
+.col-lg-12.col-md-12.col-sm-12
+  %form{name: 'add_task_form'}
+    .col-lg-10.col-md-10.col-sm-10
+      %input{name: 'title', type: 'text', 'ng-model' => '$parent.title', class: 'form-control',
+            validator: 'required', 'valid-method' => 'submit-only', 'required-error-message' => "Title required"}
+    .col-lg-2.col-md-2.col-sm-2
+      %button.btn.btn-primary{'ng-click' => 'add_task()', 'validation-submit' => 'add_task_form'} Add task
