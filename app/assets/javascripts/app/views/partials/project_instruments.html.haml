@@ -1,4 +1,5 @@
 %md-icon.material-icons{'ng-click' => 'project.toggle_tasks = !project.toggle_tasks',
  'ng-init' => 'project.toggle_tasks = true'} list
-%md-icon.material-icons{data: {toggle: 'modal', target: '#edit_project_modal'}} mode_edit
+%md-icon.material-icons{data: {toggle: 'modal', target: '#edit_project_modal',
+ 'ng-click' => 'project_data.project = project'}} mode_edit
 %md-icon.material-icons{'ng-click' => 'delete_project(project)'} delete_forever

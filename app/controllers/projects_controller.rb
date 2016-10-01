@@ -11,12 +11,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project.update(title: params[:title])
+    @project.update(project_params)
   end
 
   def destroy
     @project.destroy
-    render json: current_user.projects
   end
 
   private
