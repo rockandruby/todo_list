@@ -57,6 +57,9 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'ffaker'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'capybara-angular'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
