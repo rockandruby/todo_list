@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://angular-todolist.herokuapp.com/
+
+SPA TodoList with following abilities:
 
 Things you may want to cover:
 
-* Ruby version
+* Ability to sign in/sign up by email/password or Facebook
 
-* System dependencies
+* Ability to create/update/delete projects
 
-* Configuration
+* Ability to add tasks to project
 
-* Database creation
+* Ability to update/delete tasks
 
-* Database initialization
+* Ability to prioritise tasks into a project
 
-* How to run the test suite
+* Ability to choose deadline for task
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ability to mark a task as 'done'
 
-* Deployment instructions
+* Ability to add coments to tasks
 
-* ...
+* Ability to delete coments
+
+* Ability to attache files to coments
