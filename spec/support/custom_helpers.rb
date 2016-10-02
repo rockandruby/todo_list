@@ -17,3 +17,14 @@ end
 def project_ability
   @ability.can :manage, Project, user_id: user.id
 end
+
+def task_ability
+  project_ability
+  @ability.can :manage, Task, project: { user_id: user.id }
+end
+
+def comment_ability
+  project_ability
+  task_ability
+  can :manage, Comment, task: { project: { user_id: user.id } }
+end
