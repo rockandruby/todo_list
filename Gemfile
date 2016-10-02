@@ -58,8 +58,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'ffaker'
   gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'capybara-angular'
+  gem 'poltergeist'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

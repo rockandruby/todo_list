@@ -3,19 +3,19 @@
     %form{"ng-init" => "registrationForm = {}", "ng-submit" => "submitRegistration(registrationForm)", :role => "form"}
       .form-group
         %label Name
-        %input#name.form-control{:name => "name",
+        %input.form-control{:name => "name",
          "ng-model" => "registrationForm.name", :required => "required"}/
       .form-group
         %label Email
-        %input#email.form-control{:name => "email",
+        %input.form-control{:name => "email",
          "ng-model" => "registrationForm.email", :required => "required", :type => "email"}/
       .form-group
         %label Password
-        %input#pass.form-control{:name => "password",
+        %input.form-control{:name => "password",
          "ng-model" => "registrationForm.password", :required => "required", :type => "password"}/
       .form-group
         %label Password confirmation
-        %input#pass_conf.form-control{:name => "password_confirmation",
+        %input.form-control{:name => "password_confirmation",
          "ng-model" => "registrationForm.password_confirmation", :required => "required", :type => "password"}/
       .form-group
         %button.btn.btn-primary{:type => "submit"} Register
