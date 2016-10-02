@@ -26,5 +26,5 @@ end
 def comment_ability
   project_ability
   task_ability
-  can :manage, Comment, task: { project: { user_id: user.id } }
+  @ability.can :manage, Comment, task: { project: { user_id: user.id } }
 end

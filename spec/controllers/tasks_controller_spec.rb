@@ -8,7 +8,6 @@ RSpec.describe TasksController, type: :controller do
   before(:each) do
     set_ability
     sign_in_user
-    create_list(:task, 10, project: project)
   end
 
   it 'should create new task' do
