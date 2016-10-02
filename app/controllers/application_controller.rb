@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     head :forbidden
   end
 
+  def todo_home
+    render 'layouts/application'
+  end
+
   protected
 
   def configure_permitted_parameters
