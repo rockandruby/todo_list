@@ -21,8 +21,44 @@ RSpec.feature "Tasks", type: :feature do
 
   scenario 'Mark as done', :js do
     within first('.project') do
-      first('.task').find('md-checkbox').set(true)
+      within first('.task') do
+        find('md-checkbox').set(true)
+      end
     end
     expect(page).to have_content('updated')
+  end
+
+  scenario 'Edit task', :js do
+    within first('.project') do
+      within first('.task') do
+        find('md-ink-ripple').click
+        find('.edit_task').click
+        within '#task_edit_form' do
+          fill_in 'task_body', with: FFaker::Lorem.sentence
+          click_on 'Update task'
+        end
+        expect(page).to have_content('updated')
+      end
+    end
+  end
+
+  scenario 'Delete task', :js do
+    within first('.project') do
+      within first('.task') do
+        find('md-ink-ripple').click
+        find('.delete_task').click
+      end
+      expect(page).to have_content('deleted')
+    end
+  end
+
+  scenario 'Choose deadline', :js do
+    within first('.project') do
+      within first('.task') do
+        find('.md-datepicker-button').click
+        find('.md-calendar-date').click
+      end
+      expect(page).to have_content('updated')
+    end
   end
 end

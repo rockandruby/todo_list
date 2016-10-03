@@ -8,10 +8,10 @@
     %md-icon.material-icons list
   %md-menu-content{:width => "2"}
     %md-menu-item
-      %md-icon.material-icons{data: {toggle: 'modal', target: '#task_modal'},
+      %md-icon.material-icons.edit_task{data: {toggle: 'modal', target: '#task_modal'},
                 'ng-click' => 'task_data.task = task'} mode_edit
     %md-menu-item
-      %md-icon.material-icons{'ng-click' => 'delete_task(task)'} delete_forever
+      %md-icon.material-icons.delete_task{'ng-click' => 'delete_task(task)'} delete_forever
     %md-menu-item
       %md-icon.material-icons{data: {toggle: 'modal', target: '#comments_modal'},
                  'ng-click' => 'task_data.task = task'} comment

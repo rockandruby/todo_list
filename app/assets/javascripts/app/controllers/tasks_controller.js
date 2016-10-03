@@ -44,6 +44,6 @@ function TasksController($scope, Flash, task) {
     };
 
     $scope.check_deadline = function (obj) {
-        if (obj.deadline != null) return new Date() > new Date(obj.deadline)
+        if (obj.deadline != null && !obj.is_done) return new Date() > new Date(obj.deadline)
     };
 }
