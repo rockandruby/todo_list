@@ -4,13 +4,13 @@ RSpec.feature "Tasks", type: :feature do
   background do
     visit '/'
     login_user(user)
-    create_pair(:project, user: user)
+    create(:project, user: user)
   end
 
   given(:user) { create(:user) }
 
   scenario 'Add task', :js do
-    within first('.project') do
+    within ('.project') do
       within 'form[name="edit_project_form"]' do
         fill_in 'title', with: FFaker::Lorem.sentence
       end
@@ -20,8 +20,8 @@ RSpec.feature "Tasks", type: :feature do
   end
 
   scenario 'Mark as done', :js do
-    within first('.project') do
-      within first('.task') do
+    within ('.project') do
+      within find(:css, '.task', match: :first) do
         find('md-checkbox').set(true)
       end
     end
@@ -29,8 +29,8 @@ RSpec.feature "Tasks", type: :feature do
   end
 
   scenario 'Edit task', :js do
-    within first('.project') do
-      within first('.task') do
+    within ('.project') do
+      within find(:css, '.task', match: :first) do
         find('md-ink-ripple').click
         find('.edit_task').click
         within '#task_edit_form' do
@@ -43,8 +43,8 @@ RSpec.feature "Tasks", type: :feature do
   end
 
   scenario 'Delete task', :js do
-    within first('.project') do
-      within first('.task') do
+    within ('.project') do
+      within find(:css, '.task', match: :first) do
         find('md-ink-ripple').click
         find('.delete_task').click
       end
@@ -53,8 +53,8 @@ RSpec.feature "Tasks", type: :feature do
   end
 
   scenario 'Choose deadline', :js do
-    within first('.project') do
-      within first('.task') do
+    within ('.project') do
+      within find(:css, '.task', match: :first) do
         find('.md-datepicker-button').click
         find('.md-calendar-date').click
       end
