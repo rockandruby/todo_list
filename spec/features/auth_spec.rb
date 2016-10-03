@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'sign_in/sign_up/oauth/sign_out' do
+RSpec.feature "Auth", type: :feature do
   background do
     visit '/'
   end
@@ -31,19 +31,6 @@ feature 'sign_in/sign_up/oauth/sign_out' do
     reg_user
     click_on 'Sign out'
     expect(page).to have_content 'Sign in'
-  end
-
-  private
-
-  def reg_user
-    click_on 'Sign up'
-    within('form') do
-      fill_in 'name', with: FFaker::Name.name
-      fill_in 'email', with: FFaker::Internet.email
-      fill_in 'password', with: 1234
-      fill_in 'password_confirmation', with: 1234
-    end
-    click_on 'Register'
   end
 
 end

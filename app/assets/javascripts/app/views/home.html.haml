@@ -10,12 +10,12 @@
     %div{'ng-controller': 'TasksController'}
       %div{class: "ng-include: 'partials/add_task_form.html'"}
       %div{class: "ng-include: 'modals/task.html'"}
-      .col-lg-12.col-md-12.col-sm-12{'ng-show' => 'project.toggle_tasks',
+      .col-lg-12.col-md-12.col-sm-12.task{'ng-show' => 'project.toggle_tasks',
        'ng-class' => '{deadline: check_deadline(task)}',
        'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
         .col-lg-1.col-md-1.col-sm-1
           %md-checkbox{name: 'is_done', 'ng-model' => 'task.is_done', 'aria-label' => 'Done',
-           'ng-click' => 'task_data.task = task; update_task()'} Done
+           'ng-change' => 'task_data.task = task; update_task()'} Done
         .col-lg-7.col-md-7.col-sm-7{'ng-bind' => 'task.title'}
         .col-lg-4.col-md-4.col-sm-4
           %div{class: "ng-include: 'partials/task_instruments.html'"}

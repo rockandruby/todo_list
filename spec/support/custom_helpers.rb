@@ -28,3 +28,23 @@ def comment_ability
   task_ability
   @ability.can :manage, Comment, task: { project: { user_id: user.id } }
 end
+
+def reg_user
+  click_on 'Sign up'
+  within('form') do
+    fill_in 'name', with: FFaker::Name.name
+    fill_in 'email', with: FFaker::Internet.email
+    fill_in 'password', with: 1234
+    fill_in 'password_confirmation', with: 1234
+  end
+  click_on 'Register'
+end
+
+def login_user(user)
+  click_on 'Sign in'
+  within('form') do
+    fill_in 'email', with: user.email
+    fill_in 'password', with: user.password
+  end
+  click_on 'log_in'
+end
