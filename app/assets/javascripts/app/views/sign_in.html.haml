@@ -3,10 +3,10 @@
     %form{"ng-init" => "loginForm = {}", "ng-submit" => "submitLogin(loginForm)", :role => "form"}
       .form-group
         %label Email
-        %input#email.form-control{:name => "email", "ng-model" => "loginForm.email", :required => "required", :type => "email"}/
+        %input.form-control{:name => "email", "ng-model" => "loginForm.email", :required => "required", :type => "email"}/
       .form-group
         %label Password
-        %input#pass.form-control{:name => "password", "ng-model" => "loginForm.password", :required => "required", :type => "password"}/
+        %input.form-control{:name => "password", "ng-model" => "loginForm.password", :required => "required", :type => "password"}/
       .form-group
         %button#log_in.btn.btn-primary{:type => "submit"} Sign in
 .row
