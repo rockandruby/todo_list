@@ -18,7 +18,7 @@ app.factory('project', ['$http', '$auth', function ($http, $auth) {
         },
         edit_project: function (project) {
             return $http({
-                method: 'PATCH',
+                method: 'PUT',
                 url: $auth.apiUrl() + '/projects/' + project.id,
                 data: {project: project}
             })
