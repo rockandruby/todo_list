@@ -10,18 +10,13 @@ RSpec.feature "Comments", type: :feature do
   given(:user) { create(:user) }
 
   scenario 'Add comment', :js do
-
-    # within ('.project') do
-    #   within find(:css, '.task', match: :first) do
-    #     find('md-ink-ripple').click
-    #     find('add_comment').click
-    #     within '#comments_modal' do
-    #       fill_in 'comment_body', with: FFaker::Lorem.sentence
-    #       attach_file('file', Rails.root + '/spec/support/test_file.txt')
-    #     end
-    #     expect { click_on 'Add comment' }.to change(find('.md-3-line').length).by(1)
-    #   end
-    # end
+    manage_instruments
+    find(:css, '.md-open-menu-container .add_comment', match: :first).click
+    within '#comment_form' do
+      fill_in 'comment_body', with: FFaker::Lorem.sentence
+      find('#exampleInputFile', visible: false).set(Rails.root + '/spec/support/test_file.txt')
+    end
+    expect { click_on 'Add comment' }.to change{sleep 1; find_all('.md-3-line').count}.by(1)
   end
 
   # scenario 'Delete comment' do

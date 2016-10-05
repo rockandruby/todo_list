@@ -18,7 +18,7 @@
                   %md-icon.material-icons file_download
                   %a{"ng-href" => "{{comment.file.url}}", :target => "_blank"}Download attachment
               %md-divider{"ng-if" => "!$last"}
-            %form{name: 'Form'}
+            %form#comment_form{name: 'Form'}
               .form-group
                 %label{:for => "comment_body"} Enter your comment
                 %textarea#comment_body.form-control{'ng-model' => 'comment_data.title',
