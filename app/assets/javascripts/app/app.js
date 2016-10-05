@@ -12,14 +12,14 @@ var app = angular.module('app', [
     'validation.rule'
 ]);
 
-app.config(['$authProvider', function($authProvider){
+app.config(['$authProvider', function ($authProvider) {
     $authProvider.configure({
         apiUrl: '',
         omniauthWindowType: 'newWindow'
     });
 }]);
 
-app.config(['FlashProvider', function(FlashProvider){
+app.config(['FlashProvider', function (FlashProvider) {
     FlashProvider.setTimeout(3000);
 }]);
 
