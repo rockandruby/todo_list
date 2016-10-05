@@ -25,7 +25,7 @@ app.factory('task', ['$http', '$auth', function ($http, $auth) {
         },
         prioritise: function (task, direction) {
             return $http({
-                method: 'PATCH',
+                method: 'PUT',
                 url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id + '/prioritise',
                 data: {direction: direction}
             })

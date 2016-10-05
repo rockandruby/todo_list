@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :tasks do
       resources :comments, only: [:create, :destroy]
     end
-    patch '/tasks/:id/prioritise', to: 'tasks#prioritise'
+    put '/tasks/:id/prioritise', to: 'tasks#prioritise'
   end
 end
