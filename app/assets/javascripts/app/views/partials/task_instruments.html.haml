@@ -1,10 +1,10 @@
 .col-lg-1.col-md-1.col-sm-1
   %div{'ng-show' => '!$first'}
-    %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'up'; change_position(task)"} keyboard_arrow_up
+    %md-icon.change_position.material-icons{ 'ng-click' => "task_data.direction = 'up'; change_position(task)"} keyboard_arrow_up
   %div{'ng-show' => '!$last'}
-    %md-icon.material-icons{ 'ng-click' => "task_data.direction = 'down';change_position(task)"} keyboard_arrow_down
+    %md-icon.change_position.material-icons{ 'ng-click' => "task_data.direction = 'down';change_position(task)"} keyboard_arrow_down
 %md-menu{"md-offset" => "0 -7"}
-  %md-button.md-icon-button{"aria-label" => "Open demo menu", "ng-click" => "$mdOpenMenu($event)"}
+  %md-button.md-icon-button.edit_instruments{"aria-label" => "Open demo menu", "ng-click" => "$mdOpenMenu($event)"}
     %md-icon.material-icons list
   %md-menu-content{:width => "2"}
     %md-menu-item

@@ -5,7 +5,7 @@
         %form{name: 'edit_project_form'}
           .form-group
             %label{:for => "edit_project_body"} Enter project title
-            %input#edit_project_body{name: 'title', type: 'text', 'ng-model' => 'project_data.project.title', class: 'form-control',
+            %input#edit_project_body.form-control{name: 'title', type: 'text', 'ng-model' => 'project_data.project.title',
             validator: 'required', 'valid-method' => 'submit-only', 'required-error-message' => "Title required"}
           .form-group
             %button.btn.btn-primary{'ng-click' => 'update_project()', 'validation-submit' => 'edit_project_form'} Edit project

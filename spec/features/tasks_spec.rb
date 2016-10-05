@@ -4,61 +4,48 @@ RSpec.feature "Tasks", type: :feature do
   background do
     visit '/'
     login_user(user)
-    create(:project, user: user)
+    project = create(:project, user: user)
+    create_list(:task, 10, project: project)
   end
 
   given(:user) { create(:user) }
 
   scenario 'Add task', :js do
-    within ('.project') do
-      within 'form[name="edit_project_form"]' do
-        fill_in 'title', with: FFaker::Lorem.sentence
-      end
+    within find(:css, '.project', match: :first) do
+      fill_in 'add_task_title', with: FFaker::Lorem.sentence
       click_on 'Add task'
-      expect(page).to have_content('added')
     end
+    expect(page).to have_content('added')
   end
 
   scenario 'Mark as done', :js do
-    within ('.project') do
-      within find(:css, '.task', match: :first) do
-        find('md-checkbox').set(true)
-      end
-    end
+    find(:css, '.project .task md-checkbox', match: :first).click
     expect(page).to have_content('updated')
   end
 
   scenario 'Edit task', :js do
-    within ('.project') do
-      within find(:css, '.task', match: :first) do
-        find('md-ink-ripple').click
-        find('.edit_task').click
-        within '#task_edit_form' do
-          fill_in 'task_body', with: FFaker::Lorem.sentence
-          click_on 'Update task'
-        end
-        expect(page).to have_content('updated')
-      end
-    end
+    manage_instruments
+    find(:css, '.md-open-menu-container .edit_task', match: :first).click
+    fill_in 'task_body', with: FFaker::Lorem.sentence
+    click_on 'Update task'
+    expect(page).to have_content('updated')
   end
 
   scenario 'Delete task', :js do
-    within ('.project') do
-      within find(:css, '.task', match: :first) do
-        find('md-ink-ripple').click
-        find('.delete_task').click
-      end
-      expect(page).to have_content('deleted')
-    end
+    manage_instruments
+    find(:css, '.md-open-menu-container .delete_task', match: :first).click
+    expect(page).to have_content('deleted')
   end
 
   scenario 'Choose deadline', :js do
-    within ('.project') do
-      within find(:css, '.task', match: :first) do
-        find('.md-datepicker-button').click
-        find('.md-calendar-date').click
-      end
-      expect(page).to have_content('updated')
-    end
+    find(:css, '.project .task .md-datepicker-button', match: :first).click
+    find(:css, '.md-calendar-date span', match: :first).click
+    expect(page).to have_content('updated')
   end
+
+  scenario 'Change position', :js do
+    find(:css, '.project .task .change_position', match: :first).click
+    expect(page).to have_content('updated')
+  end
+
 end

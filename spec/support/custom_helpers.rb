@@ -48,3 +48,7 @@ def login_user(user)
   end
   click_on 'log_in'
 end
+
+def manage_instruments
+  find(:css, '.project .task .edit_instruments', match: :first).click
+end
