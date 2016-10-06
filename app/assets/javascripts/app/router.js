@@ -17,7 +17,10 @@ function Routes($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl : "home.html"
+            templateUrl : "home.html",
+            controller: function($scope) {
+                $scope.current_task = $scope.project_data = $scope.comment_data = {}
+            }
         })
         .state('sign_in', {
             url: '/sign_in',

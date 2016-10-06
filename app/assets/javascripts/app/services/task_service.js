@@ -3,10 +3,10 @@
  */
 app.factory('task', ['$http', '$auth', function ($http, $auth) {
     return {
-        add_task: function (project, task) {
+        add_task: function (task) {
             return $http({
                 method: 'POST',
-                url: $auth.apiUrl() + '/projects/' + project.id + '/tasks',
+                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks',
                 data: {task: task}
             })
         },
@@ -23,11 +23,11 @@ app.factory('task', ['$http', '$auth', function ($http, $auth) {
                 url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id
             })
         },
-        prioritise: function (task, direction) {
+        prioritise: function (task) {
             return $http({
                 method: 'PUT',
                 url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id + '/prioritise',
-                data: {direction: direction}
+                data: {direction: task.direction}
             })
         }
     }

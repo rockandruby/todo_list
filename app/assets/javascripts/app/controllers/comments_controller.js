@@ -6,18 +6,21 @@ app.controller('CommentsController', ['$scope', 'comment', CommentsController]);
 function CommentsController($scope, comment) {
 
     $scope.add_comment = function(){
-        comment.add_comment($scope.task_data.task, $scope.comment_data)
+        $scope.comment_data.project_id = $scope.current_task.task.project_id;
+        $scope.comment_data.task_id = $scope.current_task.task.id;
+        comment.add_comment($scope.comment_data)
             .then(function successCallback(response) {
-                $scope.task_data.task.comments.push(response.data);
+                $scope.current_task.task.comments.push(response.data);
                 $scope.comment_data = {}
             })
     };
 
     $scope.delete_comment = function (comment_obj) {
-        comment.delete_comment($scope.task_data.task, comment_obj)
+        comment_obj.project_id = $scope.current_task.task.project_id;
+        comment.delete_comment(comment_obj)
             .then(function successCallback() {
-                index = $scope.task_data.task.comments.indexOf(comment_obj);
-                $scope.task_data.task.comments.splice(index, 1);
+                index = $scope.current_task.task.comments.indexOf(comment_obj);
+                $scope.current_task.task.comments.splice(index, 1);
             })
     };
 }

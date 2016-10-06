@@ -6,8 +6,8 @@ app.controller('TasksController', ['$scope', 'Flash', 'task', TasksController]);
 function TasksController($scope, Flash, task) {
 
     $scope.add_task = function () {
-        var data = {title: $scope.title};
-        task.add_task($scope.project, data)
+        var data = {title: $scope.title, project_id: $scope.project.id};
+        task.add_task(data)
             .then(function successCallback(response) {
                 $scope.project.tasks.push(response.data);
                 Flash.create('success', 'New task added!');
@@ -15,8 +15,8 @@ function TasksController($scope, Flash, task) {
             });
     };
 
-    $scope.update_task = function () {
-        task.edit_task($scope.task_data.task)
+    $scope.current_task.update_task = function (task_obj) {
+        task.edit_task(task_obj)
             .then(function successCallback() {
                 angular.element('#task_modal').modal('hide');
                 Flash.create('success', 'Task updated!');
@@ -33,7 +33,7 @@ function TasksController($scope, Flash, task) {
     };
 
     $scope.change_position = function (task_obj) {
-        task.prioritise(task_obj, $scope.task_data.direction)
+        task.prioritise(task_obj)
             .then(function successCallback(response) {
                 $scope.project.tasks = response.data.tasks;
                 Flash.create('success', 'Task updated!');
