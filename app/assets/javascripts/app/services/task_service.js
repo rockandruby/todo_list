@@ -1,34 +1,20 @@
 /**
  * Created by user on 27.09.16.
  */
-app.factory('task', ['$http', '$auth', function ($http, $auth) {
+app.factory('task', ['$http', function ($http) {
     return {
         add_task: function (task) {
-            return $http({
-                method: 'POST',
-                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks',
-                data: {task: task}
-            })
+            return $http.post('/projects/' + task.project_id + '/tasks', {task: task})
         },
         edit_task: function (task) {
-            return $http({
-                method: 'PUT',
-                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id,
-                data: {task: task}
-            })
+            return $http.put('/projects/' + task.project_id + '/tasks/' + task.id, {task: task})
         },
         delete_task: function (task) {
-            return $http({
-                method: 'DELETE',
-                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id
-            })
+            return $http.delete('/projects/' + task.project_id + '/tasks/' + task.id)
         },
         prioritise: function (task) {
-            return $http({
-                method: 'PUT',
-                url: $auth.apiUrl() + '/projects/' + task.project_id + '/tasks/' + task.id + '/prioritise',
-                data: {direction: task.direction}
-            })
+            return $http.put('/projects/' + task.project_id + '/tasks/' + task.id + '/prioritise',
+                {direction: task.direction})
         }
     }
 }]);

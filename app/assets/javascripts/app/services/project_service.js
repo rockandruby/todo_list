@@ -1,33 +1,19 @@
 /**
  * Created by user on 27.09.16.
  */
-app.factory('project', ['$http', '$auth', function ($http, $auth) {
+app.factory('project', ['$http', function ($http) {
     return {
         get_projects: function () {
-            return $http({
-                method: 'GET',
-                url: $auth.apiUrl() + '/projects'
-            })
+            return $http.get('/projects')
         },
         add_project: function (project) {
-            return $http({
-                method: 'POST',
-                url: $auth.apiUrl() + '/projects',
-                data: {project: project}
-            })
+            return $http.post('/projects', {project: project})
         },
         edit_project: function (project) {
-            return $http({
-                method: 'PUT',
-                url: $auth.apiUrl() + '/projects/' + project.id,
-                data: {project: project}
-            })
+            return $http.put('/projects/' + project.id, {project: project})
         },
         delete_project: function (project) {
-            return $http({
-                method: 'DELETE',
-                url: $auth.apiUrl() + '/projects/' + project.id
-            })
+            return $http.delete('/projects/' + project.id)
         }
     }
 }]);
