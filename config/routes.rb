@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     end
     put '/tasks/:id/prioritise', to: 'tasks#prioritise'
   end
+
+  get '*sign', to: 'application#todo_home'
 end
