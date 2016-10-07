@@ -13,9 +13,8 @@ RSpec.feature "Tasks", type: :feature do
   scenario 'Add task', :js do
     within find(:css, '.project', match: :first) do
       fill_in 'add_task_title', with: FFaker::Lorem.sentence
-      click_on 'Add task'
+      expect{click_on 'Add task'}.to change { sleep 1; find_all('.task').count }.by(1)
     end
-    expect(page).to have_content('added')
   end
 
   scenario 'Mark as done', :js do
@@ -33,8 +32,9 @@ RSpec.feature "Tasks", type: :feature do
 
   scenario 'Delete task', :js do
     manage_instruments
-    find(:css, '.md-open-menu-container .delete_task', match: :first).click
-    expect(page).to have_content('deleted')
+    expect do
+      find(:css, '.md-open-menu-container .delete_task', match: :first).click
+    end.to change { sleep 1; find_all('.task').count }.by(-1)
   end
 
   scenario 'Choose deadline', :js do
