@@ -13,26 +13,26 @@ RSpec.describe TasksController, type: :controller do
   it 'should create new task' do
     task_ability
     expect do
-      post :create, project_id: project.id, task: attributes_for(:task)
+      post :create, params: {project_id: project.id, task: attributes_for(:task)}
     end.to change { project.tasks.size }.by(1)
   end
 
   it 'should update task' do
     task_ability
-    put :update, project_id: task.project_id, id: task.id, task: attributes_for(:task)
-    expect(response).to be_success
+    expect(put :update, params: {project_id: task.project_id,
+                                 id: task.id, task: attributes_for(:task)}).to be_success
   end
 
   it 'should destroy task' do
     task_ability
     expect do
-      delete :destroy, project_id: task.project_id, id: task.id
+      delete :destroy, params: {project_id: task.project_id, id: task.id}
     end.to change { project.tasks.size }.by(-1)
   end
 
   it 'should change task position' do
     task_ability
-    patch :prioritise, project_id: task.project_id, id: task.id
+    patch :prioritise, params: {project_id: task.project_id, id: task.id}
     expect(response).to be_success
   end
 end

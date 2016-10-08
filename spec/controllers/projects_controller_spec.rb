@@ -18,18 +18,22 @@ RSpec.describe ProjectsController, type: :controller do
 
   it 'should create new project' do
     project_ability
-    expect { post :create, project: attributes_for(:project) }.to change { projects.size }.by(1)
+    expect do
+      post :create, params: {project: attributes_for(:project)}
+    end.to change { projects.size }.by(1)
   end
 
   it 'should update project' do
     project_ability
-    post :update, id: projects.take.id, project: attributes_for(:project)
+    post :update, params: {id: projects.take.id, project: attributes_for(:project)}
     expect(response).to be_success
   end
 
   it 'should destroy project' do
     project_ability
-    expect { delete :destroy, id: projects.take.id }.to change { projects.size }.by(-1)
+    expect do
+      delete :destroy, params: {id: projects.take.id}
+    end.to change { projects.size }.by(-1)
   end
 
 end

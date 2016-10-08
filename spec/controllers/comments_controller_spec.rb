@@ -13,16 +13,16 @@ RSpec.describe CommentsController, type: :controller do
   it 'should create new comment' do
     comment_ability
     expect do
-      post :create, project_id: project.id, task_id: task.id,
-           comment: attributes_for(:comment)
+      post :create, params: {project_id: project.id, task_id: task.id,
+                             comment: attributes_for(:comment)}
     end.to change { task.comments.size }.by(1)
   end
 
   it 'should delete comment' do
     comment_ability
     expect do
-      delete :destroy, project_id: project.id, task_id: task.id,
-             id: task.comments.take.id
+      delete :destroy, params: {project_id: project.id, task_id: task.id,
+                                id: task.comments.take.id}
     end.to change { task.comments.size }.by(-1)
   end
 end
