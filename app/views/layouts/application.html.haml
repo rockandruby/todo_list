@@ -12,11 +12,11 @@
       %ul.nav.nav-tabs
         %li{'ui-sref-active' => 'active'}
           %a{'ui-sref' => 'home'} Home
-        %li{'ui-sref-active' => 'active'}
-          %a{'ui-sref' => 'sign_up', 'ng-hide' => 'user.signedIn'} Sign up
-        %li{'ui-sref-active' => 'active'}
-          %a{'ui-sref' => 'sign_in', 'ng-hide' => 'user.signedIn'} Sign in
-        %li{'ui-sref-active' => 'active', 'ng-show' => 'user.signedIn'}
+        %li{'ui-sref-active' => 'active', 'ng-hide' => 'user.signedIn'}
+          %a{'ui-sref' => 'sign_up'} Sign up
+        %li{'ui-sref-active' => 'active', 'ng-hide' => 'user.signedIn'}
+          %a{'ui-sref' => 'sign_in'} Sign in
+        %li{'ng-show' => 'user.signedIn'}
           %a{'ng-click' => 'signOut()', href: '#'} Sign out
 
     .flash
