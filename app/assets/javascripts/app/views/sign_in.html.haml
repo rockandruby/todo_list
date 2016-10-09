@@ -1,14 +1,16 @@
 .row
   .col-lg-6
-    %form{"ng-init" => "loginForm = {}", "ng-submit" => "submitLogin(loginForm)", :role => "form"}
+    %form{"ng-init" => "loginForm = {}",  name: 'sign_in_form'}
       .form-group
         %label Email
-        %input.form-control{:name => "email", "ng-model" => "loginForm.email", :required => "required", :type => "email"}/
+        %input.form-control{:name => "email", "ng-model" => "loginForm.email", type: 'email',
+        validator: 'required, email', 'valid-method' => 'submit-only', 'required-error-message' => "Email required"}
       .form-group
         %label Password
-        %input.form-control{:name => "password", "ng-model" => "loginForm.password", :required => "required", :type => "password"}/
+        %input.form-control{:name => "password", "ng-model" => "loginForm.password", type: 'password',
+        validator: 'required', 'valid-method' => 'submit-only', 'required-error-message' => "Password required"}
       .form-group
-        %button#log_in.btn.btn-primary{:type => "submit"} Sign in
+        %button#log_in.btn.btn-primary{"ng-click" => "submitLogin(loginForm)", 'validation-submit' => 'sign_in_form'} Sign in
 .row
   %button{"ng-click" => "authenticate('facebook')", class: 'btn btn-success'}
     Sign in with Facebook
