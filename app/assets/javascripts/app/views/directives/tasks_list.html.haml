@@ -4,7 +4,8 @@
        'ng-repeat' => "task in project.tasks | orderBy: 'position'"}
   .col-lg-1.col-md-1.col-sm-1
     %md-checkbox{name: 'is_done', 'ng-model' => 'task.is_done', 'aria-label' => 'Done',
-           'ng-change' => 'current_task.update_task(task)'} Done
+           'ng-change' => 'current_task.update_task(task)'}
+    %span.done{'ng-show' => 'task.is_done'} Done
   .col-lg-8.col-md-8.col-sm-8{'ng-bind' => 'task.title'}
   .col-lg-3.col-md-3.col-sm-3
     %div{class: "ng-include: 'partials/task_instruments.html'"}
