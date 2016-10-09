@@ -13,7 +13,7 @@ app.service('authInterceptor',['$q', '$location', 'Flash',  function($q, $locati
         var codes = {
             401: function(){
                 $location.path('sign_in');
-                Flash.create('danger', 'Sign in before continue!');
+                Flash.create('danger', 'Not authorized!');
             },
             403: function (){
                 Flash.create('danger', 'You can\'t perform that action!');

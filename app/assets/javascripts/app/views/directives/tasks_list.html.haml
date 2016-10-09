@@ -5,6 +5,6 @@
   .col-lg-1.col-md-1.col-sm-1
     %md-checkbox{name: 'is_done', 'ng-model' => 'task.is_done', 'aria-label' => 'Done',
            'ng-change' => 'current_task.update_task(task)'} Done
-  .col-lg-7.col-md-7.col-sm-7{'ng-bind' => 'task.title'}
-  .col-lg-4.col-md-4.col-sm-4
+  .col-lg-8.col-md-8.col-sm-8{'ng-bind' => 'task.title'}
+  .col-lg-3.col-md-3.col-sm-3
     %div{class: "ng-include: 'partials/task_instruments.html'"}
