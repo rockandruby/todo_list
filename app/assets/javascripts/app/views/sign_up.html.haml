@@ -1,0 +1,30 @@
+.row
+  .col-lg-6
+    %form{"ng-init" => "registrationForm = {}", name: 'sign_up_form'}
+      .form-group
+        %label Name
+        %input.form-control{:name => "name",
+         "ng-model" => "registrationForm.name", validator: 'required', 'valid-method' => 'submit-only',
+          'required-error-message' => "Name required"}
+      .form-group
+        %label Email
+        %input.form-control{:name => "email", "ng-model" => "registrationForm.email",
+         validator: 'required, email', 'valid-method' => 'submit-only',
+          'required-error-message' => "Email required", :type => "email"}
+      .form-group
+        %label Password
+        %input.form-control{:name => "password", "ng-model" => "registrationForm.password",
+         :type => "password", validator: 'required', 'valid-method' => 'submit-only',
+          'required-error-message' => "Password required"}
+      .form-group
+        %label Password confirmation
+        %input.form-control{:name => "password_confirmation", "ng-model" => "registrationForm.password_confirmation",
+         :type => "password", validator: 'required', 'valid-method' => 'submit-only',
+          'required-error-message' => "Password confirmation required"}
+      .form-group
+        %button.btn.btn-primary{"ng-click" => "submitRegistration(registrationForm)",
+         'validation-submit' => 'sign_up_form'} Register
+.row
+  %button{"ng-click" => "authenticate('facebook')", class: 'btn btn-success'}
+    Sign in with Facebook
+

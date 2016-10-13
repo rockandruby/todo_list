@@ -1,0 +1,19 @@
+.col-lg-1.col-md-1.col-sm-1
+  %div{'ng-show' => '!$first'}
+    %md-icon.change_position.material-icons{ 'ng-click' => "task.direction = 'up'; change_position(task)"} keyboard_arrow_up
+  %div{'ng-show' => '!$last'}
+    %md-icon.change_position.material-icons{ 'ng-click' => "task.direction = 'down'; change_position(task)"} keyboard_arrow_down
+%md-menu{"md-offset" => "0 -7"}
+  %md-button.md-icon-button.edit_instruments{"aria-label" => "Open demo menu", "ng-click" => "$mdOpenMenu($event)"}
+    %md-icon.material-icons list
+  %md-menu-content{:width => "2"}
+    %md-menu-item
+      %md-icon.material-icons.edit_task{data: {toggle: 'modal', target: '#task_modal'},
+                'ng-click' => 'current_task.task = task'} mode_edit
+    %md-menu-item
+      %md-icon.material-icons.delete_task{'ng-click' => 'delete_task(task)'} delete_forever
+    %md-menu-item
+      %md-icon.material-icons.add_comment{data: {toggle: 'modal', target: '#comments_modal'},
+                 'ng-click' => 'current_task.task = task'} comment
+%md-datepicker{'md-hide-icons' => 'triangle','ng-model' => 'deadline','ng-init' => 'deadline = StrToDate(task.deadline)',
+ 'ng-change' => 'task.deadline = deadline.toString(); current_task.update_task(task)'}

@@ -12,5 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap-sprockets
+//= require angular/angular.min
+//= require angular-cookie/angular-cookie.min
+//= require angular-ui-router/release/angular-ui-router.min
+//= require ng-token-auth/dist/ng-token-auth.min
+//= require angular-flash-alert/dist/angular-flash.min
+//= require angular-aria/angular-aria.min
+//= require angular-animate/angular-animate.min
+//= require angular-animate/angular-animate.min
+//= require angular-material/angular-material.min
+//= require angular-validation/dist/angular-validation.min
+//= require angular-validation/dist/angular-validation-rule.min
+//= require ng-file-upload/dist/ng-file-upload.min
+//= require app/app
+//= require app/router
+//= require_tree ./app/services
+//= require_tree ./app/controllers
+//= require_tree ./app/directives
+//= require angular-rails-templates
+//= require_tree ./app/views
 //= require_tree .

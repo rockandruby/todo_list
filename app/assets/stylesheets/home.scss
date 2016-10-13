@@ -1,0 +1,20 @@
+html {
+  background-color: white;
+}
+.flash{
+  padding: 10px;
+}
+.link:hover{
+  cursor: pointer;
+}
+.modal .modal-body {
+  max-height: 420px;
+  overflow-y: auto;
+}
+.validation-invalid {
+  color: red;
+}
+.container{
+  width: 85% !important;
+  margin-left: 7% !important;
+}

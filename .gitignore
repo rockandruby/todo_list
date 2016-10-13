@@ -13,7 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 .idea
-vendor/bower_components
+node_modules
+.env
+/public/uploads
 
 # Ignore Byebug command history file.
 .byebug_history

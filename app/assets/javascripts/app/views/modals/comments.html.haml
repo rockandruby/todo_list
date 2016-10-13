@@ -1,0 +1,32 @@
+#comments_modal.modal.fade{'ng-controller' => 'CommentsController',"aria-labelledby" => "myLargeModalLabel",
+ :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %h3#myModalLabel.modal-title Comments
+        %h4{'ng-bind' => 'current_task.task.title'}
+      .modal-body
+        %md-content
+          %md-list
+            %md-list-item.md-3-line.row{"ng-repeat" => "comment in current_task.task.comments"}
+              .md-list-item-text
+                %button.delete_comment.close{"aria-label" => "Close",:type => "button"}
+                  %md-icon.material-icons{'ng-click' => 'delete_comment(comment)'} delete_forever
+                %div{'ng-bind' => 'comment.title'}
+                %div{'ng-show' => 'comment.file.url != null'}
+                  %md-icon.material-icons file_download
+                  %a{"ng-href" => "{{comment.file.url}}", :target => "_blank"}Download attachment
+              %md-divider{"ng-if" => "!$last"}
+            %form#comment_form{name: 'Form'}
+              .form-group
+                %label{:for => "comment_body"} Enter your comment
+                %textarea#comment_body.form-control{'ng-model' => 'comment_data.title',
+                 name: 'title', validator: 'required', 'valid-method' => 'submit-only',
+                  'required-error-message' => "Title required", 'title-error-message' => "Error title"}
+              .form-group
+                %input#exampleInputFile{:type => "file", 'ngf-select' => '',
+                 'ng-model' => "comment_data.file", 'name' => "file"}
+              .form-group
+                %button.btn.btn-primary{'ng-click' => 'add_comment()', 'validation-submit' => 'Form'} Add comment
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

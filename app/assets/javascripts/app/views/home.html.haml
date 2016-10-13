@@ -1,0 +1,16 @@
+%div{class: "ng-include: 'partials/greeting.html'", 'ng-if' => '!user.signedIn'}
+.col-lg-12.col-md-12.col-sm-12.projects{'ng-if' => 'user.signedIn', 'ng-controller': 'ProjectsController'}
+  %h3
+    %img{'ng-src'=> "{{user.image}}"} &nbsp {{user.name}}
+  %h1 MY PROJECTS
+  %div.project.row{'ng-repeat' => "project in projects | orderBy: '-id'"}
+    .col-lg-12.col-md-12.col-sm-12.head
+      .col-lg-10.col-md-10.col-sm-10{'ng-bind' => 'project.title'}
+      %div{class: "ng-include: 'partials/project_instruments.html'"}
+    %tasks-list
+  %div.add_todo
+    %button.btn.btn-primary.btn-lg{data: {toggle: 'modal', target: '#add_project_modal'}} Add TODO list
+  %div{class: "ng-include: 'modals/add_project.html'"}
+  %div{class: "ng-include: 'modals/edit_project.html'"}
+  %div{class: "ng-include: 'modals/task.html'"}
+  %div{class: "ng-include: 'modals/comments.html'"}
