@@ -12,13 +12,13 @@ RSpec.feature "Projects", type: :feature do
   scenario 'Add project', :js do
     click_on 'Add TODO list'
     fill_in 'add_project_body', with: FFaker::Lorem.sentence
-    expect { click_on 'Add project' }.to change { sleep(1); find_all('.project').count }.by(1)
+    expect { click_ajax_button 'Add project' }.to change { find_all('.project').count }.by(1)
   end
 
   scenario 'Delete project', :js do
     expect do
       find(:css, '.project', match: :first).find('.delete').click
-    end.to change { sleep 1; find_all('.project').count }.by(-1)
+    end.to change { wait_for_ajax { find_all('.project').count } }.by(-1)
   end
 
   scenario 'Edit project', :js do

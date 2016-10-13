@@ -17,7 +17,7 @@ RSpec.feature "Comments", type: :feature do
       fill_in 'comment_body', with: FFaker::Lorem.sentence
       find('#exampleInputFile', visible: false).set(Rails.root + '/spec/support/test_file.txt')
     end
-    expect { click_on 'Add comment' }.to change { sleep 1; find_all('.md-3-line').count }.by(1)
+    expect { click_on 'Add comment' }.to change { wait_for_ajax { find_all('.md-3-line').count } }.by(1)
   end
 
   scenario 'Delete comment' do
@@ -25,6 +25,6 @@ RSpec.feature "Comments", type: :feature do
     find(:css, '.md-open-menu-container .add_comment', match: :first).click
     expect do
       find(:css, '.delete_comment', match: :first).click
-    end.to change { sleep 1; find_all('.md-3-line').length }.by(-1)
+    end.to change { wait_for_ajax { find_all('.md-3-line').length } }.by(-1)
   end
 end

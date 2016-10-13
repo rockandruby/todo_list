@@ -13,7 +13,7 @@ RSpec.feature "Tasks", type: :feature do
   scenario 'Add task', :js do
     within find(:css, '.project', match: :first) do
       fill_in 'add_task_title', with: FFaker::Lorem.sentence
-      expect{click_on 'Add task'}.to change { sleep 1; find_all('.task').count }.by(1)
+      expect { click_ajax_button 'Add task' }.to change { find_all('.task').count }.by(1)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.feature "Tasks", type: :feature do
     manage_instruments
     expect do
       find(:css, '.md-open-menu-container .delete_task', match: :first).click
-    end.to change { sleep 1; find_all('.task').count }.by(-1)
+    end.to change { wait_for_ajax { find_all('.task').count } }.by(-1)
   end
 
   scenario 'Choose deadline', :js do
